@@ -18,6 +18,14 @@ namespace ENGAGEMENT
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             //config.Filters.Add(new AuthorizeAttribute());
+
+            config.Formatters.JsonFormatter.MediaTypeMappings
+.Add(new System.Net.Http.Formatting.RequestHeaderMapping("Accept",
+                            "text/html",
+                            StringComparison.InvariantCultureIgnoreCase,
+                            true,
+                            "application/json"));
+
             // Itinéraires de l'API Web
             config.MapHttpAttributeRoutes();
 
