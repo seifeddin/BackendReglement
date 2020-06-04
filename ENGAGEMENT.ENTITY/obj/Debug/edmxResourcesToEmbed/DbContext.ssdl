@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Annexe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Banque">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BonAPayer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MontantRetenu" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="MontantTotalEcheance" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="NetAPayer" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="ValiderPar" Type="varchar" MaxLength="250" />
+    <Property Name="DateValidation" Type="datetime" />
+    <Property Name="DateSignature" Type="datetime" />
+    <Property Name="EstRegle" Type="bit" />
+  </EntityType>
+  <EntityType Name="Caisse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Devise">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodeDevise" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Facture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Reference" Type="varchar" MaxLength="50" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Echeance" Type="datetime" />
+    <Property Name="MontantTotale" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MontantDev" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MontantRegle" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MontantReste" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Statut" Type="varchar" MaxLength="50" />
+    <Property Name="IdFournisseur" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FoncTechRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="IdTechRole" Type="int" Nullable="false" />
+    <Property Name="IdFoncRole" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fournisseur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaisonSocial" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+    <Property Name="FraisGeneraux" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Solde" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="EstPhysique" Type="bit" />
+    <Property Name="EstMorale" Type="bit" />
+  </EntityType>
+  <EntityType Name="ModeReglement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Reglement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Echeance" Type="datetime" />
+    <Property Name="DateValidation" Type="datetime" />
+    <Property Name="ValiderPar" Type="varchar" MaxLength="250" />
+    <Property Name="DateReglement" Type="varchar" MaxLength="250" />
+    <Property Name="IdDevise" Type="int" />
+    <Property Name="IdRetenu" Type="int" />
+    <Property Name="IdModeReglement" Type="int" />
+    <Property Name="IdBanque" Type="int" />
+    <Property Name="IdCaisse" Type="int" />
+    <Property Name="IdSuiviBancaire" Type="int" />
+    <Property Name="IdBonAPayer" Type="int" />
+  </EntityType>
+  <EntityType Name="ReglementFacture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdFacture" Type="int" Nullable="false" />
+    <Property Name="IdReglement" Type="int" Nullable="false" />
+    <Property Name="MontantTotale" Type="decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="Retenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="NumeroCertficat" Type="int" />
+    <Property Name="TypeMontant" Type="varchar" MaxLength="50" />
+    <Property Name="DateValidation" Type="datetime" />
+    <Property Name="ValiderPar" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RoleFonctionnel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="RoleTechnique">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Rubrique">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RubriqueRetenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRubrique" Type="int" Nullable="false" />
+    <Property Name="IdRetenu" Type="int" Nullable="false" />
+    <Property Name="MontantHt" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Tva" Type="float" />
+    <Property Name="MontantTtc" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="IdAnnexe" Type="int" />
+  </EntityType>
+  <EntityType Name="SuiviBancaire">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstPreavis" Type="bit" />
+    <Property Name="EstImpayes" Type="bit" />
+    <Property Name="EstRegle" Type="bit" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRoleFonctionnel" Type="int" />
+    <Property Name="NomUtilisateur" Type="varchar" MaxLength="250" />
+    <Property Name="Nom" Type="varchar" MaxLength="50" />
+    <Property Name="Prenom" Type="varchar" MaxLength="50" />
+    <Property Name="MotDePasse" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Telephone" Type="varchar" MaxLength="50" />
+    <Property Name="EstActive" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Facture_Fournisseur">
+    <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
+    <End Role="Facture" Type="Self.Facture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fournisseur">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Facture">
+        <PropertyRef Name="IdFournisseur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FoncTechRole_FoncRole">
+    <End Role="RoleFonctionnel" Type="Self.RoleFonctionnel" Multiplicity="0..1" />
+    <End Role="FoncTechRole" Type="Self.FoncTechRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleFonctionnel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoncTechRole">
+        <PropertyRef Name="IdFoncRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FoncTechRole_TechRole">
+    <End Role="RoleTechnique" Type="Self.RoleTechnique" Multiplicity="1" />
+    <End Role="FoncTechRole" Type="Self.FoncTechRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleTechnique">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoncTechRole">
+        <PropertyRef Name="IdTechRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_Banque">
+    <End Role="Banque" Type="Self.Banque" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Self.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banque">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdBanque" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_BonAPayer">
+    <End Role="BonAPayer" Type="Self.BonAPayer" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Self.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BonAPayer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdBonAPayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_Caisse">
+    <End Role="Caisse" Type="Self.Caisse" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Self.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Caisse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdCaisse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_Devise">
+    <End Role="Devise" Type="Self.Devise" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Self.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devise">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdDevise" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_ModeReglement">
+    <End Role="ModeReglement" Type="Self.ModeReglement" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Self.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModeReglement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdModeReglement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_Retenu">
+    <End Role="Retenu" Type="Self.Retenu" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Self.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Retenu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdRetenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_SuiviBancaire">
+    <End Role="SuiviBancaire" Type="Self.SuiviBancaire" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Self.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SuiviBancaire">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdSuiviBancaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReglementFacture_Facture">
+    <End Role="Facture" Type="Self.Facture" Multiplicity="1" />
+    <End Role="ReglementFacture" Type="Self.ReglementFacture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReglementFacture">
+        <PropertyRef Name="IdFacture" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReglementFacture_Reglement">
+    <End Role="Reglement" Type="Self.Reglement" Multiplicity="1" />
+    <End Role="ReglementFacture" Type="Self.ReglementFacture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reglement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReglementFacture">
+        <PropertyRef Name="IdReglement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RubriqueRetenu_Annexe">
+    <End Role="Annexe" Type="Self.Annexe" Multiplicity="0..1" />
+    <End Role="RubriqueRetenu" Type="Self.RubriqueRetenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Annexe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RubriqueRetenu">
+        <PropertyRef Name="IdAnnexe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RubriqueRetenu_Retenu">
+    <End Role="Retenu" Type="Self.Retenu" Multiplicity="1" />
+    <End Role="RubriqueRetenu" Type="Self.RubriqueRetenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Retenu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RubriqueRetenu">
+        <PropertyRef Name="IdRetenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RubriqueRetenu_Rubrique">
+    <End Role="Rubrique" Type="Self.Rubrique" Multiplicity="1" />
+    <End Role="RubriqueRetenu" Type="Self.RubriqueRetenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rubrique">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RubriqueRetenu">
+        <PropertyRef Name="IdRubrique" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Utilisateur_Role">
+    <End Role="RoleFonctionnel" Type="Self.RoleFonctionnel" Multiplicity="0..1" />
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleFonctionnel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Utilisateur">
+        <PropertyRef Name="IdRoleFonctionnel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelsStoreContainer">
+    <EntitySet Name="Annexe" EntityType="Self.Annexe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Banque" EntityType="Self.Banque" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BonAPayer" EntityType="Self.BonAPayer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Caisse" EntityType="Self.Caisse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Devise" EntityType="Self.Devise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facture" EntityType="Self.Facture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FoncTechRole" EntityType="Self.FoncTechRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ModeReglement" EntityType="Self.ModeReglement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reglement" EntityType="Self.Reglement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReglementFacture" EntityType="Self.ReglementFacture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Retenu" EntityType="Self.Retenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleFonctionnel" EntityType="Self.RoleFonctionnel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleTechnique" EntityType="Self.RoleTechnique" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rubrique" EntityType="Self.Rubrique" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RubriqueRetenu" EntityType="Self.RubriqueRetenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SuiviBancaire" EntityType="Self.SuiviBancaire" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Facture_Fournisseur" Association="Self.FK_Facture_Fournisseur">
+      <End Role="Fournisseur" EntitySet="Fournisseur" />
+      <End Role="Facture" EntitySet="Facture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FoncTechRole_FoncRole" Association="Self.FK_FoncTechRole_FoncRole">
+      <End Role="RoleFonctionnel" EntitySet="RoleFonctionnel" />
+      <End Role="FoncTechRole" EntitySet="FoncTechRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FoncTechRole_TechRole" Association="Self.FK_FoncTechRole_TechRole">
+      <End Role="RoleTechnique" EntitySet="RoleTechnique" />
+      <End Role="FoncTechRole" EntitySet="FoncTechRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_Banque" Association="Self.FK_Reglement_Banque">
+      <End Role="Banque" EntitySet="Banque" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_BonAPayer" Association="Self.FK_Reglement_BonAPayer">
+      <End Role="BonAPayer" EntitySet="BonAPayer" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_Caisse" Association="Self.FK_Reglement_Caisse">
+      <End Role="Caisse" EntitySet="Caisse" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_Devise" Association="Self.FK_Reglement_Devise">
+      <End Role="Devise" EntitySet="Devise" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_ModeReglement" Association="Self.FK_Reglement_ModeReglement">
+      <End Role="ModeReglement" EntitySet="ModeReglement" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_Retenu" Association="Self.FK_Reglement_Retenu">
+      <End Role="Retenu" EntitySet="Retenu" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_SuiviBancaire" Association="Self.FK_Reglement_SuiviBancaire">
+      <End Role="SuiviBancaire" EntitySet="SuiviBancaire" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReglementFacture_Facture" Association="Self.FK_ReglementFacture_Facture">
+      <End Role="Facture" EntitySet="Facture" />
+      <End Role="ReglementFacture" EntitySet="ReglementFacture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReglementFacture_Reglement" Association="Self.FK_ReglementFacture_Reglement">
+      <End Role="Reglement" EntitySet="Reglement" />
+      <End Role="ReglementFacture" EntitySet="ReglementFacture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RubriqueRetenu_Annexe" Association="Self.FK_RubriqueRetenu_Annexe">
+      <End Role="Annexe" EntitySet="Annexe" />
+      <End Role="RubriqueRetenu" EntitySet="RubriqueRetenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RubriqueRetenu_Retenu" Association="Self.FK_RubriqueRetenu_Retenu">
+      <End Role="Retenu" EntitySet="Retenu" />
+      <End Role="RubriqueRetenu" EntitySet="RubriqueRetenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RubriqueRetenu_Rubrique" Association="Self.FK_RubriqueRetenu_Rubrique">
+      <End Role="Rubrique" EntitySet="Rubrique" />
+      <End Role="RubriqueRetenu" EntitySet="RubriqueRetenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Utilisateur_Role" Association="Self.FK_Utilisateur_Role">
+      <End Role="RoleFonctionnel" EntitySet="RoleFonctionnel" />
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

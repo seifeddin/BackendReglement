@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a6233fcf126b4aff942de6369e1df059" Name="Diagram1">
+        <EntityTypeShape EntityType="Models.Annexe" Width="1.5" PointX="3.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Banque" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BonAPayer" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Caisse" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Devise" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Facture" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Fournisseur" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.ModeReglement" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Reglement" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.ReglementFacture" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Retenu" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.RoleFonctionnel" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.RoleTechnique" Width="1.5" PointX="8.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Rubrique" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.RubriqueRetenu" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.SuiviBancaire" Width="1.5" PointX="0.75" PointY="22.625" IsExpanded="true" />
+        <AssociationConnector Association="Models.FK_RubriqueRetenu_Annexe" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Reglement_Banque" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Reglement_BonAPayer" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Reglement_Caisse" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Reglement_Devise" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Facture_Fournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_ReglementFacture_Facture" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Reglement_ModeReglement" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Reglement_Retenu" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Reglement_SuiviBancaire" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_ReglementFacture_Reglement" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_RubriqueRetenu_Retenu" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_RubriqueRetenu_Rubrique" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Models.Utilisateur" Width="1.5" PointX="3" PointY="17" />
+        <AssociationConnector Association="Models.FK_Utilisateur_Role" />
+        <EntityTypeShape EntityType="Models.FoncTechRole" Width="1.5" PointX="11" PointY="2.625" />
+        <AssociationConnector Association="Models.FK_FoncTechRole_FoncRole" />
+        <AssociationConnector Association="Models.FK_FoncTechRole_TechRole" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

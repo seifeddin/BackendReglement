@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="REG_FSS_DB">
+    <EntitySetMapping Name="Annexe">
+      <EntityTypeMapping TypeName="Models.Annexe">
+        <MappingFragment StoreEntitySet="Annexe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banque">
+      <EntityTypeMapping TypeName="Models.Banque">
+        <MappingFragment StoreEntitySet="Banque">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BonAPayer">
+      <EntityTypeMapping TypeName="Models.BonAPayer">
+        <MappingFragment StoreEntitySet="BonAPayer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MontantRetenu" ColumnName="MontantRetenu" />
+          <ScalarProperty Name="MontantTotalEcheance" ColumnName="MontantTotalEcheance" />
+          <ScalarProperty Name="NetAPayer" ColumnName="NetAPayer" />
+          <ScalarProperty Name="ValiderPar" ColumnName="ValiderPar" />
+          <ScalarProperty Name="DateValidation" ColumnName="DateValidation" />
+          <ScalarProperty Name="DateSignature" ColumnName="DateSignature" />
+          <ScalarProperty Name="EstRegle" ColumnName="EstRegle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Caisse">
+      <EntityTypeMapping TypeName="Models.Caisse">
+        <MappingFragment StoreEntitySet="Caisse">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devise">
+      <EntityTypeMapping TypeName="Models.Devise">
+        <MappingFragment StoreEntitySet="Devise">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodeDevise" ColumnName="CodeDevise" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facture">
+      <EntityTypeMapping TypeName="Models.Facture">
+        <MappingFragment StoreEntitySet="Facture">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Echeance" ColumnName="Echeance" />
+          <ScalarProperty Name="MontantTotale" ColumnName="MontantTotale" />
+          <ScalarProperty Name="MontantDev" ColumnName="MontantDev" />
+          <ScalarProperty Name="MontantRegle" ColumnName="MontantRegle" />
+          <ScalarProperty Name="MontantReste" ColumnName="MontantReste" />
+          <ScalarProperty Name="Statut" ColumnName="Statut" />
+          <ScalarProperty Name="IdFournisseur" ColumnName="IdFournisseur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fournisseur">
+      <EntityTypeMapping TypeName="Models.Fournisseur">
+        <MappingFragment StoreEntitySet="Fournisseur">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RaisonSocial" ColumnName="RaisonSocial" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="FraisGeneraux" ColumnName="FraisGeneraux" />
+          <ScalarProperty Name="Solde" ColumnName="Solde" />
+          <ScalarProperty Name="EstPhysique" ColumnName="EstPhysique" />
+          <ScalarProperty Name="EstMorale" ColumnName="EstMorale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModeReglement">
+      <EntityTypeMapping TypeName="Models.ModeReglement">
+        <MappingFragment StoreEntitySet="ModeReglement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reglement">
+      <EntityTypeMapping TypeName="Models.Reglement">
+        <MappingFragment StoreEntitySet="Reglement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Echeance" ColumnName="Echeance" />
+          <ScalarProperty Name="DateValidation" ColumnName="DateValidation" />
+          <ScalarProperty Name="ValiderPar" ColumnName="ValiderPar" />
+          <ScalarProperty Name="DateReglement" ColumnName="DateReglement" />
+          <ScalarProperty Name="IdDevise" ColumnName="IdDevise" />
+          <ScalarProperty Name="IdRetenu" ColumnName="IdRetenu" />
+          <ScalarProperty Name="IdModeReglement" ColumnName="IdModeReglement" />
+          <ScalarProperty Name="IdBanque" ColumnName="IdBanque" />
+          <ScalarProperty Name="IdCaisse" ColumnName="IdCaisse" />
+          <ScalarProperty Name="IdSuiviBancaire" ColumnName="IdSuiviBancaire" />
+          <ScalarProperty Name="IdBonAPayer" ColumnName="IdBonAPayer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReglementFacture">
+      <EntityTypeMapping TypeName="Models.ReglementFacture">
+        <MappingFragment StoreEntitySet="ReglementFacture">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdFacture" ColumnName="IdFacture" />
+          <ScalarProperty Name="IdReglement" ColumnName="IdReglement" />
+          <ScalarProperty Name="MontantTotale" ColumnName="MontantTotale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Retenu">
+      <EntityTypeMapping TypeName="Models.Retenu">
+        <MappingFragment StoreEntitySet="Retenu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="NumeroCertficat" ColumnName="NumeroCertficat" />
+          <ScalarProperty Name="TypeMontant" ColumnName="TypeMontant" />
+          <ScalarProperty Name="DateValidation" ColumnName="DateValidation" />
+          <ScalarProperty Name="ValiderPar" ColumnName="ValiderPar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleFonctionnel">
+      <EntityTypeMapping TypeName="Models.RoleFonctionnel">
+        <MappingFragment StoreEntitySet="RoleFonctionnel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleTechnique">
+      <EntityTypeMapping TypeName="Models.RoleTechnique">
+        <MappingFragment StoreEntitySet="RoleTechnique">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rubrique">
+      <EntityTypeMapping TypeName="Models.Rubrique">
+        <MappingFragment StoreEntitySet="Rubrique">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RubriqueRetenu">
+      <EntityTypeMapping TypeName="Models.RubriqueRetenu">
+        <MappingFragment StoreEntitySet="RubriqueRetenu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRubrique" ColumnName="IdRubrique" />
+          <ScalarProperty Name="IdRetenu" ColumnName="IdRetenu" />
+          <ScalarProperty Name="MontantHt" ColumnName="MontantHt" />
+          <ScalarProperty Name="Tva" ColumnName="Tva" />
+          <ScalarProperty Name="MontantTtc" ColumnName="MontantTtc" />
+          <ScalarProperty Name="IdAnnexe" ColumnName="IdAnnexe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuiviBancaire">
+      <EntityTypeMapping TypeName="Models.SuiviBancaire">
+        <MappingFragment StoreEntitySet="SuiviBancaire">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EstPreavis" ColumnName="EstPreavis" />
+          <ScalarProperty Name="EstImpayes" ColumnName="EstImpayes" />
+          <ScalarProperty Name="EstRegle" ColumnName="EstRegle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateur">
+      <EntityTypeMapping TypeName="Models.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="EstActive" ColumnName="EstActive" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="NomUtilisateur" ColumnName="NomUtilisateur" />
+          <ScalarProperty Name="IdRoleFonctionnel" ColumnName="IdRoleFonctionnel" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoncTechRole">
+      <EntityTypeMapping TypeName="Models.FoncTechRole">
+        <MappingFragment StoreEntitySet="FoncTechRole">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdFoncRole" ColumnName="IdFoncRole" />
+          <ScalarProperty Name="IdTechRole" ColumnName="IdTechRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,15 @@
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.csprojAssemblyReference.cache
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.csproj.CoreCompileInputs.cache
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.DATA.dll
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.DATA.pdb
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.ENTITY.dll
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.ENTITY.pdb
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.csproj.CopyComplete
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.dll
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.pdb
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.DATA.dll.config
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.dll
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.ENTITY.dll.config
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.xml
+C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.SqlServer.xml
