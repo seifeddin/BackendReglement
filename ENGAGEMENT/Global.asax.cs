@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
+using ENGAGEMENT.CORE.Converter;
 using ENGAGEMENT.CORE.Mapping;
 using ENGAGEMENT.DATA;
 using ENGAGEMENT.DATA.Interfaces;
@@ -45,6 +46,8 @@ namespace ENGAGEMENT
             builder.RegisterType<FournisseurService>().As<IFournisseurService>().InstancePerRequest();
             builder.RegisterType<FournisseursRepository>().As<IFournisseursRepository>().InstancePerRequest();
 
+            // We must register the custom converter also the system not able to registered automatic
+            builder.RegisterType<FournisseurToFournisseurDtoConverter>().AsSelf();
 
             builder.Register(context => new MapperConfiguration(cfg =>
             {
@@ -60,8 +63,7 @@ namespace ENGAGEMENT
                     var context = c.Resolve<IComponentContext>();
                     var configMapper = context.Resolve<MapperConfiguration>();
                     return configMapper.CreateMapper(context.Resolve);
-                })
-                .As<IMapper>();
+                }).As<IMapper>().InstancePerLifetimeScope();
 
 
             // Set the dependency resolver to be Autofac.
