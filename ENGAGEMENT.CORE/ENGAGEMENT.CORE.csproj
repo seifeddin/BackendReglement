@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Converter\FournisseurToFournisseurDtoConverter.cs" />
     <Compile Include="Dto\FournisseurDto.cs" />
-    <Compile Include="Mapping\CoreConvertProfil.cs" />
+    <Compile Include="Mapping\CoreConvertProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

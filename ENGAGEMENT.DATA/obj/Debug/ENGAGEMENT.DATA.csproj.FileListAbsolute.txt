@@ -13,3 +13,18 @@ C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEME
 C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.ENTITY.dll.config
 C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.xml
 C:\Users\SEIFEDDINE-PC\Documents\Visual Studio 2017\Projects\Engagement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.SqlServer.xml
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.DATA.dll.config
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.DATA.dll
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.DATA.pdb
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.ENTITY.dll
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.dll
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.SqlServer.dll
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.ENTITY.pdb
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\ENGAGEMENT.ENTITY.dll.config
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.xml
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\bin\Debug\EntityFramework.SqlServer.xml
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.csprojAssemblyReference.cache
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.csproj.CoreCompileInputs.cache
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.csproj.CopyComplete
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.dll
+C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.DATA\obj\Debug\ENGAGEMENT.DATA.pdb
