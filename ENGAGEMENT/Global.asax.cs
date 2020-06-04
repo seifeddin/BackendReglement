@@ -2,11 +2,7 @@
 using Autofac.Integration.WebApi;
 using ENGAGEMENT.SERVICES.Implementations;
 using ENGAGEMENT.SERVICES.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -41,11 +37,9 @@ namespace ENGAGEMENT
 
             // OPTIONAL: Register the Autofac model binder provider.
             builder.RegisterWebApiModelBinderProvider();
-
-            builder.RegisterGeneric(typeof(CommonService<>))
-       .As(typeof(ICommonService<>));
-            builder.RegisterGeneric(typeof(Repository<>))
-     .As(typeof(IRepository<>));
+            builder.RegisterType<REG_FSS_DB>().SingleInstance();
+            builder.RegisterGeneric(typeof(CommonService<>)).As(typeof(ICommonService<>));
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<FournisseurService>().As<IFournisseurService>().InstancePerRequest();
             builder.RegisterType<FournisseursRepository>().As<IFournisseursRepository>().InstancePerRequest();
             
