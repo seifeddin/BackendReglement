@@ -16,6 +16,7 @@ namespace ENGAGEMENT.CORE.Dto
         public Nullable<decimal> Solde { get; set; }
         public Nullable<bool> EstPhysique { get; set; }
         public Nullable<bool> EstMorale { get; set; }
+        public Nullable<System.DateTime> EcheanceDate { get; set; }
 
     }
 }

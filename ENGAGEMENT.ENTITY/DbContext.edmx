@@ -81,6 +81,7 @@
           <Property Name="Solde" Type="decimal" Precision="18" Scale="0" />
           <Property Name="EstPhysique" Type="bit" />
           <Property Name="EstMorale" Type="bit" />
+          <Property Name="EcheanceDate" Type="date" />
         </EntityType>
         <EntityType Name="ModeReglement">
           <Key>
@@ -522,22 +523,8 @@
           <Property Name="MontantReste" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Statut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IdFournisseur" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Fournisseur" Relationship="Self.FK_Facture_Fournisseur" FromRole="Facture" ToRole="Fournisseur" />
           <NavigationProperty Name="ReglementFacture" Relationship="Self.FK_ReglementFacture_Facture" FromRole="Facture" ToRole="ReglementFacture" />
-        </EntityType>
-        <EntityType Name="Fournisseur">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RaisonSocial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FraisGeneraux" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Solde" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="EstPhysique" Type="Boolean" />
-          <Property Name="EstMorale" Type="Boolean" />
-          <NavigationProperty Name="Facture" Relationship="Self.FK_Facture_Fournisseur" FromRole="Fournisseur" ToRole="Facture" />
+          <NavigationProperty Name="Fournisseur" Relationship="Models.FK_Facture_Fournisseur" FromRole="Facture" ToRole="Fournisseur" />
         </EntityType>
         <EntityType Name="ModeReglement">
           <Key>
@@ -706,18 +693,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Facture_Fournisseur">
-          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
-          <End Role="Facture" Type="Self.Facture" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Fournisseur">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Facture">
-              <PropertyRef Name="IdFournisseur" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ReglementFacture_Facture">
           <End Role="Facture" Type="Self.Facture" Multiplicity="1" />
           <End Role="ReglementFacture" Type="Self.ReglementFacture" Multiplicity="*" />
@@ -809,7 +784,6 @@
           <EntitySet Name="Caisse" EntityType="Self.Caisse" />
           <EntitySet Name="Devise" EntityType="Self.Devise" />
           <EntitySet Name="Facture" EntityType="Self.Facture" />
-          <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" />
           <EntitySet Name="ModeReglement" EntityType="Self.ModeReglement" />
           <EntitySet Name="Reglement" EntityType="Self.Reglement" />
           <EntitySet Name="ReglementFacture" EntityType="Self.ReglementFacture" />
@@ -838,10 +812,6 @@
           <AssociationSet Name="FK_Reglement_Devise" Association="Self.FK_Reglement_Devise">
             <End Role="Devise" EntitySet="Devise" />
             <End Role="Reglement" EntitySet="Reglement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Facture_Fournisseur" Association="Self.FK_Facture_Fournisseur">
-            <End Role="Fournisseur" EntitySet="Fournisseur" />
-            <End Role="Facture" EntitySet="Facture" />
           </AssociationSet>
           <AssociationSet Name="FK_ReglementFacture_Facture" Association="Self.FK_ReglementFacture_Facture">
             <End Role="Facture" EntitySet="Facture" />
@@ -884,6 +854,11 @@
           <AssociationSet Name="FK_FoncTechRole_TechRole" Association="Models.FK_FoncTechRole_TechRole">
             <End Role="RoleTechnique" EntitySet="RoleTechnique" />
             <End Role="FoncTechRole" EntitySet="FoncTechRole" />
+          </AssociationSet>
+          <EntitySet Name="Fournisseur" EntityType="Models.Fournisseur" />
+          <AssociationSet Name="FK_Facture_Fournisseur" Association="Models.FK_Facture_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Facture" EntitySet="Facture" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Utilisateur">
@@ -944,6 +919,33 @@
             </Principal>
             <Dependent Role="FoncTechRole">
               <PropertyRef Name="IdTechRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Fournisseur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaisonSocial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FraisGeneraux" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Solde" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EstPhysique" Type="Boolean" />
+          <Property Name="EstMorale" Type="Boolean" />
+          <Property Name="EcheanceDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Facture" Relationship="Models.FK_Facture_Fournisseur" FromRole="Fournisseur" ToRole="Facture" />
+        </EntityType>
+        <Association Name="FK_Facture_Fournisseur">
+          <End Type="Models.Fournisseur" Role="Fournisseur" Multiplicity="1" />
+          <End Type="Models.Facture" Role="Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Facture">
+              <PropertyRef Name="IdFournisseur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1012,20 +1014,6 @@
                 <ScalarProperty Name="MontantReste" ColumnName="MontantReste" />
                 <ScalarProperty Name="Statut" ColumnName="Statut" />
                 <ScalarProperty Name="IdFournisseur" ColumnName="IdFournisseur" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Fournisseur">
-            <EntityTypeMapping TypeName="Models.Fournisseur">
-              <MappingFragment StoreEntitySet="Fournisseur">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RaisonSocial" ColumnName="RaisonSocial" />
-                <ScalarProperty Name="Nom" ColumnName="Nom" />
-                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
-                <ScalarProperty Name="FraisGeneraux" ColumnName="FraisGeneraux" />
-                <ScalarProperty Name="Solde" ColumnName="Solde" />
-                <ScalarProperty Name="EstPhysique" ColumnName="EstPhysique" />
-                <ScalarProperty Name="EstMorale" ColumnName="EstMorale" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1145,6 +1133,21 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdFoncRole" ColumnName="IdFoncRole" />
                 <ScalarProperty Name="IdTechRole" ColumnName="IdTechRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fournisseur">
+            <EntityTypeMapping TypeName="Models.Fournisseur">
+              <MappingFragment StoreEntitySet="Fournisseur">
+                <ScalarProperty Name="EcheanceDate" ColumnName="EcheanceDate" />
+                <ScalarProperty Name="EstMorale" ColumnName="EstMorale" />
+                <ScalarProperty Name="EstPhysique" ColumnName="EstPhysique" />
+                <ScalarProperty Name="Solde" ColumnName="Solde" />
+                <ScalarProperty Name="FraisGeneraux" ColumnName="FraisGeneraux" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="RaisonSocial" ColumnName="RaisonSocial" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

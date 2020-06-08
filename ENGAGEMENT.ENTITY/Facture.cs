@@ -31,8 +31,8 @@ namespace ENGAGEMENT.ENTITY
         public string Statut { get; set; }
         public int IdFournisseur { get; set; }
     
-        public virtual Fournisseur Fournisseur { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReglementFacture> ReglementFacture { get; set; }
+        public virtual Fournisseur Fournisseur { get; set; }
     }
 }

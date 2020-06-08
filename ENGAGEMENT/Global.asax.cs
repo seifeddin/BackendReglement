@@ -14,6 +14,7 @@ using ENGAGEMENT.DATA;
 using ENGAGEMENT.DATA.Interfaces;
 using ENGAGEMENT.DATA.Implements;
 using ENGAGEMENT.ENTITY;
+using IMapper = AutoMapper.IMapper;
 
 namespace ENGAGEMENT
 {
@@ -40,14 +41,17 @@ namespace ENGAGEMENT
 
             // OPTIONAL: Register the Autofac model binder provider.
             builder.RegisterWebApiModelBinderProvider();
-            builder.RegisterType<REG_FSS_DB>().SingleInstance();
+            builder.RegisterType<REG_FSS_DB>();
             builder.RegisterGeneric(typeof(CommonService<>)).As(typeof(ICommonService<>));
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<FournisseurService>().As<IFournisseurService>().InstancePerRequest();
             builder.RegisterType<FournisseursRepository>().As<IFournisseursRepository>().InstancePerRequest();
+            builder.RegisterType<FacturesRepository>().As<IFacturesRepository>().InstancePerRequest();
+            builder.RegisterType<FactureService>().As<IFactureService>().InstancePerRequest();
 
             // We must register the custom converter also the system not able to registered automatic
             builder.RegisterType<FournisseurToFournisseurDtoConverter>().AsSelf();
+            builder.RegisterType<FactureToFactureDtoConverter>().AsSelf();
 
             builder.Register(context => new MapperConfiguration(cfg =>
             {

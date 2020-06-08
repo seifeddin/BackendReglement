@@ -31,7 +31,6 @@ namespace ENGAGEMENT.ENTITY
         public virtual DbSet<Caisse> Caisse { get; set; }
         public virtual DbSet<Devise> Devise { get; set; }
         public virtual DbSet<Facture> Facture { get; set; }
-        public virtual DbSet<Fournisseur> Fournisseur { get; set; }
         public virtual DbSet<ModeReglement> ModeReglement { get; set; }
         public virtual DbSet<Reglement> Reglement { get; set; }
         public virtual DbSet<ReglementFacture> ReglementFacture { get; set; }
@@ -43,5 +42,6 @@ namespace ENGAGEMENT.ENTITY
         public virtual DbSet<SuiviBancaire> SuiviBancaire { get; set; }
         public virtual DbSet<Utilisateur> Utilisateur { get; set; }
         public virtual DbSet<FoncTechRole> FoncTechRole { get; set; }
+        public virtual DbSet<Fournisseur> Fournisseur { get; set; }
     }
 }

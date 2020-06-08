@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ENGAGEMENT.DATA.Implements
 {
-    public class FournisseursRepository : Repository<Fournisseur>, IFournisseursRepository
+    public class FacturesRepository:Repository<Facture>,IFacturesRepository
     {
-        public FournisseursRepository(REG_FSS_DB context):base(context)
+        public FacturesRepository(REG_FSS_DB context) : base(context)
         {
-        }
 
+        }
 
     }
 }

@@ -11,6 +11,7 @@ namespace ENGAGEMENT.CORE.Mapping
         public CoreConvertProfile()
         {
             this.CreateMap<Fournisseur, FournisseurDto>().ConvertUsing<FournisseurToFournisseurDtoConverter>();
+            this.CreateMap<Facture, FactureDto>().ConvertUsing<FactureToFactureDtoConverter>();
         }
     }
 }

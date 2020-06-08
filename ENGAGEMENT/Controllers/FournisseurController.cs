@@ -10,7 +10,8 @@ using System.Web.Http;
 
 namespace ENGAGEMENT.Controllers
 {
-    [RoutePrefix("api/Fournisseur")]
+   [RoutePrefix("api/Fournisseur")]
+    //[Route("api/Fournisseur")]
     public class FournisseurController : ApiController
     {
         public IFournisseurService service;
@@ -20,7 +21,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         [HttpGet]
-        [Route("",Name = "GetAll")]
+        [Route("suppliers", Name = "GetAll")]
         public List<FournisseurDto> GetAll()
         {
            return service.GetAllFournisseurs().ToList();
@@ -28,6 +29,12 @@ namespace ENGAGEMENT.Controllers
             //    RaisonSocial = p.RaisonSocial,
             //    Nom = p.Nom
             //}).ToList();                
+        }
+        [HttpGet]
+        [Route("GetLookupSuppliers", Name = "GetLookupFournisseur")]
+        public List<LookupDto> GetLookupFournisseur()
+        {
+            return this.service.GetLookupFournisseurs();
         }
     }
 }

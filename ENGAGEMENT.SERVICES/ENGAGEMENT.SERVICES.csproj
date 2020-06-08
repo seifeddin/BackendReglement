@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\CommonService.cs" />
+    <Compile Include="Implementations\FactureService.cs" />
     <Compile Include="Implementations\FournisseurService.cs" />
     <Compile Include="Interfaces\ICommonService.cs" />
+    <Compile Include="Interfaces\IFactureService.cs" />
     <Compile Include="Interfaces\IFournisseurService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

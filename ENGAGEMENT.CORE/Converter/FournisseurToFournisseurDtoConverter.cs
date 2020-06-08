@@ -23,6 +23,12 @@ namespace ENGAGEMENT.CORE.Converter
             destination.Prenom = source.Prenom;
             destination.RaisonSocial = source.RaisonSocial;
             destination.Solde = source.Solde;
+            destination.FraisGeneraux = source.FraisGeneraux;
+            destination.EstMorale = source.EstMorale;
+            destination.EstPhysique = source.EstPhysique;
+            destination.EcheanceDate = source.EcheanceDate;
+            
+         
             return destination;
             
         }

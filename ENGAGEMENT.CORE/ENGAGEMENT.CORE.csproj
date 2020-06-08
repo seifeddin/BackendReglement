@@ -44,8 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\FactureToFactureDtoConverter.cs" />
     <Compile Include="Converter\FournisseurToFournisseurDtoConverter.cs" />
+    <Compile Include="Dto\FactureDto.cs" />
     <Compile Include="Dto\FournisseurDto.cs" />
+    <Compile Include="Dto\LookupDto.cs" />
     <Compile Include="Mapping\CoreConvertProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
