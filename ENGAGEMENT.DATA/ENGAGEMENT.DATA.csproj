@@ -51,17 +51,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implements\AnnexeRepository.cs" />
     <Compile Include="Implements\BanqueRepository.cs" />
+    <Compile Include="Implements\BonAPayerRepository.cs" />
     <Compile Include="Implements\CaisseRepository.cs" />
+    <Compile Include="Implements\DetailReglementRepository.cs" />
+    <Compile Include="Implements\DeviseRepository.cs" />
     <Compile Include="Implements\FacturesRepository.cs" />
+    <Compile Include="Implements\FoncTechRoleRepository.cs" />
     <Compile Include="Implements\FournisseursRepository.cs" />
     <Compile Include="Implements\ModeReglementRepository.cs" />
+    <Compile Include="Implements\ReglementFactureRepository.cs" />
+    <Compile Include="Implements\ReglementRepository.cs" />
+    <Compile Include="Implements\RetenuRepository.cs" />
+    <Compile Include="Implements\RoleFonctionnelRepository.cs" />
+    <Compile Include="Implements\RoleTechniqueRepository.cs" />
+    <Compile Include="Implements\RubriqueRepository.cs" />
+    <Compile Include="Implements\RubriqueRetenuRepository.cs" />
+    <Compile Include="Implements\SuiviBancaireRepository.cs" />
+    <Compile Include="Implements\UtilisateurRepository.cs" />
     <Compile Include="Interfaces\IAnnexeRepository.cs" />
     <Compile Include="Interfaces\IBanqueRepository.cs" />
+    <Compile Include="Interfaces\IBonAPayerRepository.cs" />
     <Compile Include="Interfaces\ICaisseRepository.cs" />
+    <Compile Include="Interfaces\IDetailReglementRepository.cs" />
+    <Compile Include="Interfaces\IDeviseRepository.cs" />
     <Compile Include="Interfaces\IFacturesRepository.cs" />
+    <Compile Include="Interfaces\IFoncTechRoleRepository.cs" />
     <Compile Include="Interfaces\IFournisseursRepository.cs" />
     <Compile Include="Interfaces\IModeReglementRepository.cs" />
+    <Compile Include="Interfaces\IReglementFactureRepository.cs" />
+    <Compile Include="Interfaces\IReglementRepository.cs" />
+    <Compile Include="Interfaces\IRetenuRepository.cs" />
+    <Compile Include="Interfaces\IRoleFonctionnelRepository.cs" />
+    <Compile Include="Interfaces\IRoleTechniqueRepository.cs" />
+    <Compile Include="Interfaces\IRubriqueRepository.cs" />
+    <Compile Include="Interfaces\IRubriqueRetenuRepository.cs" />
+    <Compile Include="Interfaces\ISuiviBancaireRepository.cs" />
+    <Compile Include="Interfaces\IUtilisateurRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>
