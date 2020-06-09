@@ -26,9 +26,8 @@ namespace ENGAGEMENT.CORE.Converter
             destination.FraisGeneraux = source.FraisGeneraux;
             destination.EstMorale = source.EstMorale;
             destination.EstPhysique = source.EstPhysique;
-            destination.EcheanceDate = source.EcheanceDate;
-            
-         
+
+
             return destination;
             
         }

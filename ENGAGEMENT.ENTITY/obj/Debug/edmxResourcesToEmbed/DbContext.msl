@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="REG_FSS_DB">
     <EntitySetMapping Name="Annexe">
-      <EntityTypeMapping TypeName="Models.Annexe">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Annexe)">
         <MappingFragment StoreEntitySet="Annexe">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Banque">
-      <EntityTypeMapping TypeName="Models.Banque">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Banque)">
         <MappingFragment StoreEntitySet="Banque">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -18,7 +18,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BonAPayer">
-      <EntityTypeMapping TypeName="Models.BonAPayer">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.BonAPayer)">
         <MappingFragment StoreEntitySet="BonAPayer">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="MontantRetenu" ColumnName="MontantRetenu" />
@@ -32,7 +32,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Caisse">
-      <EntityTypeMapping TypeName="Models.Caisse">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Caisse)">
         <MappingFragment StoreEntitySet="Caisse">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -40,7 +40,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Devise">
-      <EntityTypeMapping TypeName="Models.Devise">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Devise)">
         <MappingFragment StoreEntitySet="Devise">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CodeDevise" ColumnName="CodeDevise" />
@@ -48,7 +48,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Facture">
-      <EntityTypeMapping TypeName="Models.Facture">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Facture)">
         <MappingFragment StoreEntitySet="Facture">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Reference" ColumnName="Reference" />
@@ -63,48 +63,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Fournisseur">
-      <EntityTypeMapping TypeName="Models.Fournisseur">
-        <MappingFragment StoreEntitySet="Fournisseur">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="RaisonSocial" ColumnName="RaisonSocial" />
-          <ScalarProperty Name="Nom" ColumnName="Nom" />
-          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
-          <ScalarProperty Name="FraisGeneraux" ColumnName="FraisGeneraux" />
-          <ScalarProperty Name="Solde" ColumnName="Solde" />
-          <ScalarProperty Name="EstPhysique" ColumnName="EstPhysique" />
-          <ScalarProperty Name="EstMorale" ColumnName="EstMorale" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ModeReglement">
-      <EntityTypeMapping TypeName="Models.ModeReglement">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.ModeReglement)">
         <MappingFragment StoreEntitySet="ModeReglement">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Reglement">
-      <EntityTypeMapping TypeName="Models.Reglement">
-        <MappingFragment StoreEntitySet="Reglement">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Echeance" ColumnName="Echeance" />
-          <ScalarProperty Name="DateValidation" ColumnName="DateValidation" />
-          <ScalarProperty Name="ValiderPar" ColumnName="ValiderPar" />
-          <ScalarProperty Name="DateReglement" ColumnName="DateReglement" />
-          <ScalarProperty Name="IdDevise" ColumnName="IdDevise" />
-          <ScalarProperty Name="IdRetenu" ColumnName="IdRetenu" />
-          <ScalarProperty Name="IdModeReglement" ColumnName="IdModeReglement" />
-          <ScalarProperty Name="IdBanque" ColumnName="IdBanque" />
-          <ScalarProperty Name="IdCaisse" ColumnName="IdCaisse" />
-          <ScalarProperty Name="IdSuiviBancaire" ColumnName="IdSuiviBancaire" />
-          <ScalarProperty Name="IdBonAPayer" ColumnName="IdBonAPayer" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ReglementFacture">
-      <EntityTypeMapping TypeName="Models.ReglementFacture">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.ReglementFacture)">
         <MappingFragment StoreEntitySet="ReglementFacture">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdFacture" ColumnName="IdFacture" />
@@ -114,7 +82,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Retenu">
-      <EntityTypeMapping TypeName="Models.Retenu">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Retenu)">
         <MappingFragment StoreEntitySet="Retenu">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Date" ColumnName="Date" />
@@ -126,7 +94,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RoleFonctionnel">
-      <EntityTypeMapping TypeName="Models.RoleFonctionnel">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.RoleFonctionnel)">
         <MappingFragment StoreEntitySet="RoleFonctionnel">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -134,7 +102,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RoleTechnique">
-      <EntityTypeMapping TypeName="Models.RoleTechnique">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.RoleTechnique)">
         <MappingFragment StoreEntitySet="RoleTechnique">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -142,7 +110,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Rubrique">
-      <EntityTypeMapping TypeName="Models.Rubrique">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Rubrique)">
         <MappingFragment StoreEntitySet="Rubrique">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -150,7 +118,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RubriqueRetenu">
-      <EntityTypeMapping TypeName="Models.RubriqueRetenu">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.RubriqueRetenu)">
         <MappingFragment StoreEntitySet="RubriqueRetenu">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdRubrique" ColumnName="IdRubrique" />
@@ -163,7 +131,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SuiviBancaire">
-      <EntityTypeMapping TypeName="Models.SuiviBancaire">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.SuiviBancaire)">
         <MappingFragment StoreEntitySet="SuiviBancaire">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="EstPreavis" ColumnName="EstPreavis" />
@@ -173,26 +141,67 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Utilisateur">
-      <EntityTypeMapping TypeName="Models.Utilisateur">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Utilisateur)">
         <MappingFragment StoreEntitySet="Utilisateur">
-          <ScalarProperty Name="EstActive" ColumnName="EstActive" />
-          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
-          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
-          <ScalarProperty Name="Nom" ColumnName="Nom" />
-          <ScalarProperty Name="NomUtilisateur" ColumnName="NomUtilisateur" />
-          <ScalarProperty Name="IdRoleFonctionnel" ColumnName="IdRoleFonctionnel" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRoleFonctionnel" ColumnName="IdRoleFonctionnel" />
+          <ScalarProperty Name="NomUtilisateur" ColumnName="NomUtilisateur" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="EstActive" ColumnName="EstActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FoncTechRole">
-      <EntityTypeMapping TypeName="Models.FoncTechRole">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.FoncTechRole)">
         <MappingFragment StoreEntitySet="FoncTechRole">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdFoncRole" ColumnName="IdFoncRole" />
           <ScalarProperty Name="IdTechRole" ColumnName="IdTechRole" />
+          <ScalarProperty Name="IdFoncRole" ColumnName="IdFoncRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reglement">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Reglement)">
+        <MappingFragment StoreEntitySet="Reglement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Echeance" ColumnName="Echeance" />
+          <ScalarProperty Name="DateValidation" ColumnName="DateValidation" />
+          <ScalarProperty Name="ValiderPar" ColumnName="ValiderPar" />
+          <ScalarProperty Name="DateReglement" ColumnName="DateReglement" />
+          <ScalarProperty Name="IdRetenu" ColumnName="IdRetenu" />
+          <ScalarProperty Name="IdSuiviBancaire" ColumnName="IdSuiviBancaire" />
+          <ScalarProperty Name="IdBonAPayer" ColumnName="IdBonAPayer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetailReglement">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.DetailReglement)">
+        <MappingFragment StoreEntitySet="DetailReglement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdBanque" ColumnName="IdBanque" />
+          <ScalarProperty Name="IdCaisse" ColumnName="IdCaisse" />
+          <ScalarProperty Name="IdDevise" ColumnName="IdDevise" />
+          <ScalarProperty Name="IdModeReglement" ColumnName="IdModeReglement" />
+          <ScalarProperty Name="Montant" ColumnName="Montant" />
+          <ScalarProperty Name="IdReglement" ColumnName="IdReglement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fournisseur">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Fournisseur)">
+        <MappingFragment StoreEntitySet="Fournisseur">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RaisonSocial" ColumnName="RaisonSocial" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="FraisGeneraux" ColumnName="FraisGeneraux" />
+          <ScalarProperty Name="Solde" ColumnName="Solde" />
+          <ScalarProperty Name="EstPhysique" ColumnName="EstPhysique" />
+          <ScalarProperty Name="EstMorale" ColumnName="EstMorale" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
