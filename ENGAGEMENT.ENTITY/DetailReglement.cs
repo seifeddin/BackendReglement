@@ -12,18 +12,18 @@ namespace ENGAGEMENT.ENTITY
     using System;
     using System.Collections.Generic;
     
-    public partial class Rubrique
+    public partial class DetailReglement
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rubrique()
-        {
-            this.RubriqueRetenu = new HashSet<RubriqueRetenu>();
-        }
-    
         public int Id { get; set; }
-        public string Description { get; set; }
+        public Nullable<int> IdBanque { get; set; }
+        public Nullable<int> IdCaisse { get; set; }
+        public Nullable<int> IdDevise { get; set; }
+        public Nullable<int> IdModeReglement { get; set; }
+        public Nullable<decimal> Montant { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RubriqueRetenu> RubriqueRetenu { get; set; }
+        public virtual Banque Banque { get; set; }
+        public virtual Caisse Caisse { get; set; }
+        public virtual Devise Devise { get; set; }
+        public virtual ModeReglement ModeReglement { get; set; }
     }
 }

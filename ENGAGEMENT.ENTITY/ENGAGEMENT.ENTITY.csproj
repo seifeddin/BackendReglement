@@ -80,6 +80,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DetailReglement.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Devise.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
@@ -145,6 +148,7 @@
       <DependentUpon>DbContext.edmx</DependentUpon>
       <LastGenOutput>DbContext.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="DbContext.edmx.sql" />
     <Content Include="DbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DbContext.edmx</DependentUpon>

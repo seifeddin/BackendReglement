@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="Models.Devise" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.Facture" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.ModeReglement" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Models.Reglement" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.ReglementFacture" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.Retenu" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.RoleFonctionnel" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
@@ -21,15 +20,7 @@
         <EntityTypeShape EntityType="Models.RubriqueRetenu" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.SuiviBancaire" Width="1.5" PointX="0.75" PointY="22.625" IsExpanded="true" />
         <AssociationConnector Association="Models.FK_RubriqueRetenu_Annexe" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Reglement_Banque" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Reglement_BonAPayer" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Reglement_Caisse" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Reglement_Devise" ManuallyRouted="false" />
         <AssociationConnector Association="Models.FK_ReglementFacture_Facture" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Reglement_ModeReglement" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Reglement_Retenu" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_Reglement_SuiviBancaire" ManuallyRouted="false" />
-        <AssociationConnector Association="Models.FK_ReglementFacture_Reglement" ManuallyRouted="false" />
         <AssociationConnector Association="Models.FK_RubriqueRetenu_Retenu" ManuallyRouted="false" />
         <AssociationConnector Association="Models.FK_RubriqueRetenu_Rubrique" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Models.Utilisateur" Width="1.5" PointX="3" PointY="17" />
@@ -39,6 +30,16 @@
         <AssociationConnector Association="Models.FK_FoncTechRole_TechRole" />
         <EntityTypeShape EntityType="Models.Fournisseur" Width="1.5" PointX="3.75" PointY="1" />
         <AssociationConnector Association="Models.FK_Facture_Fournisseur" />
+        <EntityTypeShape EntityType="Models.DetailReglement" Width="1.5" PointX="6" PointY="14.375" />
+        <AssociationConnector Association="Models.FK_DetailReglement_Banque" />
+        <AssociationConnector Association="Models.FK_DetailReglement_Caisse" />
+        <AssociationConnector Association="Models.FK_DetailReglement_Devise" />
+        <AssociationConnector Association="Models.FK_DetailReglement_ModeReglement" />
+        <EntityTypeShape EntityType="Models.Reglement" Width="1.5" PointX="6.625" PointY="9.75" />
+        <AssociationConnector Association="Models.FK_Reglement_BonAPayer" />
+        <AssociationConnector Association="Models.FK_Reglement_Retenu" />
+        <AssociationConnector Association="Models.FK_Reglement_SuiviBancaire" />
+        <AssociationConnector Association="Models.FK_ReglementFacture_Reglement" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
