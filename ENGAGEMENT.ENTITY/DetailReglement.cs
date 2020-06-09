@@ -20,10 +20,12 @@ namespace ENGAGEMENT.ENTITY
         public Nullable<int> IdDevise { get; set; }
         public Nullable<int> IdModeReglement { get; set; }
         public Nullable<decimal> Montant { get; set; }
+        public int IdReglement { get; set; }
     
         public virtual Banque Banque { get; set; }
         public virtual Caisse Caisse { get; set; }
         public virtual Devise Devise { get; set; }
         public virtual ModeReglement ModeReglement { get; set; }
+        public virtual Reglement Reglement { get; set; }
     }
 }

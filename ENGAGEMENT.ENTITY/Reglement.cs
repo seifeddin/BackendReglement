@@ -18,6 +18,7 @@ namespace ENGAGEMENT.ENTITY
         public Reglement()
         {
             this.ReglementFacture = new HashSet<ReglementFacture>();
+            this.DetailReglement = new HashSet<DetailReglement>();
         }
     
         public int Id { get; set; }
@@ -34,5 +35,7 @@ namespace ENGAGEMENT.ENTITY
         public virtual SuiviBancaire SuiviBancaire { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReglementFacture> ReglementFacture { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetailReglement> DetailReglement { get; set; }
     }
 }

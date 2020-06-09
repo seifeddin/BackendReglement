@@ -28,18 +28,19 @@
         <EntityTypeShape EntityType="Models.FoncTechRole" Width="1.5" PointX="11" PointY="2.625" />
         <AssociationConnector Association="Models.FK_FoncTechRole_FoncRole" />
         <AssociationConnector Association="Models.FK_FoncTechRole_TechRole" />
-        <EntityTypeShape EntityType="Models.Fournisseur" Width="1.5" PointX="3.75" PointY="1" />
-        <AssociationConnector Association="Models.FK_Facture_Fournisseur" />
-        <EntityTypeShape EntityType="Models.DetailReglement" Width="1.5" PointX="6" PointY="14.375" />
-        <AssociationConnector Association="Models.FK_DetailReglement_Banque" />
-        <AssociationConnector Association="Models.FK_DetailReglement_Caisse" />
-        <AssociationConnector Association="Models.FK_DetailReglement_Devise" />
-        <AssociationConnector Association="Models.FK_DetailReglement_ModeReglement" />
         <EntityTypeShape EntityType="Models.Reglement" Width="1.5" PointX="6.625" PointY="9.75" />
         <AssociationConnector Association="Models.FK_Reglement_BonAPayer" />
         <AssociationConnector Association="Models.FK_Reglement_Retenu" />
         <AssociationConnector Association="Models.FK_Reglement_SuiviBancaire" />
         <AssociationConnector Association="Models.FK_ReglementFacture_Reglement" />
+        <EntityTypeShape EntityType="Models.DetailReglement" Width="1.5" PointX="8.875" PointY="14.125" />
+        <AssociationConnector Association="Models.FK_DetailReglement_Banque" />
+        <AssociationConnector Association="Models.FK_DetailReglement_Caisse" />
+        <AssociationConnector Association="Models.FK_DetailReglement_Devise" />
+        <AssociationConnector Association="Models.FK_DetailReglement_ModeReglement" />
+        <AssociationConnector Association="Models.FK_DetailReglement_Reglement" />
+        <EntityTypeShape EntityType="Models.Fournisseur" Width="1.5" PointX="3.75" PointY="1" />
+        <AssociationConnector Association="Models.FK_Facture_Fournisseur" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

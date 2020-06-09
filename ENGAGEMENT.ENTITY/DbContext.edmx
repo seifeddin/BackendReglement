@@ -22,9 +22,9 @@
     <EntitySet Name="SuiviBancaire" EntityType="Models.Store.SuiviBancaire" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Utilisateur" EntityType="Models.Store.Utilisateur" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FoncTechRole" EntityType="Models.Store.FoncTechRole" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Fournisseur" EntityType="Models.Store.Fournisseur" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DetailReglement" EntityType="Models.Store.DetailReglement" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Reglement" EntityType="Models.Store.Reglement" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetailReglement" EntityType="Models.Store.DetailReglement" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Fournisseur" EntityType="Models.Store.Fournisseur" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_RubriqueRetenu_Annexe" Association="Models.Store.FK_RubriqueRetenu_Annexe">
       <End Role="Annexe" EntitySet="Annexe" />
       <End Role="RubriqueRetenu" EntitySet="RubriqueRetenu" />
@@ -53,9 +53,21 @@
       <End Role="RoleTechnique" EntitySet="RoleTechnique" />
       <End Role="FoncTechRole" EntitySet="FoncTechRole" />
     </AssociationSet>
-    <AssociationSet Name="FK_Facture_Fournisseur" Association="Models.Store.FK_Facture_Fournisseur">
-      <End Role="Fournisseur" EntitySet="Fournisseur" />
-      <End Role="Facture" EntitySet="Facture" />
+    <AssociationSet Name="FK_Reglement_BonAPayer" Association="Models.Store.FK_Reglement_BonAPayer">
+      <End Role="BonAPayer" EntitySet="BonAPayer" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_Retenu" Association="Models.Store.FK_Reglement_Retenu">
+      <End Role="Retenu" EntitySet="Retenu" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reglement_SuiviBancaire" Association="Models.Store.FK_Reglement_SuiviBancaire">
+      <End Role="SuiviBancaire" EntitySet="SuiviBancaire" />
+      <End Role="Reglement" EntitySet="Reglement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReglementFacture_Reglement" Association="Models.Store.FK_ReglementFacture_Reglement">
+      <End Role="Reglement" EntitySet="Reglement" />
+      <End Role="ReglementFacture" EntitySet="ReglementFacture" />
     </AssociationSet>
     <AssociationSet Name="FK_DetailReglement_Banque" Association="Models.Store.FK_DetailReglement_Banque">
       <End Role="Banque" EntitySet="Banque" />
@@ -73,21 +85,13 @@
       <End Role="ModeReglement" EntitySet="ModeReglement" />
       <End Role="DetailReglement" EntitySet="DetailReglement" />
     </AssociationSet>
-    <AssociationSet Name="FK_Reglement_BonAPayer" Association="Models.Store.FK_Reglement_BonAPayer">
-      <End Role="BonAPayer" EntitySet="BonAPayer" />
+    <AssociationSet Name="FK_DetailReglement_Reglement" Association="Models.Store.FK_DetailReglement_Reglement">
       <End Role="Reglement" EntitySet="Reglement" />
+      <End Role="DetailReglement" EntitySet="DetailReglement" />
     </AssociationSet>
-    <AssociationSet Name="FK_Reglement_Retenu" Association="Models.Store.FK_Reglement_Retenu">
-      <End Role="Retenu" EntitySet="Retenu" />
-      <End Role="Reglement" EntitySet="Reglement" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Reglement_SuiviBancaire" Association="Models.Store.FK_Reglement_SuiviBancaire">
-      <End Role="SuiviBancaire" EntitySet="SuiviBancaire" />
-      <End Role="Reglement" EntitySet="Reglement" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReglementFacture_Reglement" Association="Models.Store.FK_ReglementFacture_Reglement">
-      <End Role="Reglement" EntitySet="Reglement" />
-      <End Role="ReglementFacture" EntitySet="ReglementFacture" />
+    <AssociationSet Name="FK_Facture_Fournisseur" Association="Models.Store.FK_Facture_Fournisseur">
+      <End Role="Fournisseur" EntitySet="Fournisseur" />
+      <End Role="Facture" EntitySet="Facture" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Annexe">
@@ -237,31 +241,6 @@
     <Property Name="IdFoncRole" Type="int" Nullable="true" />
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
-  <EntityType Name="Fournisseur">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RaisonSocial" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Nom" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Prenom" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="FraisGeneraux" Type="decimal" Nullable="true" Precision="18" Scale="3" />
-    <Property Name="Solde" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="EstPhysique" Type="bit" Nullable="true" />
-    <Property Name="EstMorale" Type="bit" Nullable="true" />
-    <Property Name="EcheanceDate" Type="datetime" Nullable="true" />
-  </EntityType>
-  <EntityType Name="DetailReglement">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdBanque" Type="int" Nullable="true" />
-    <Property Name="IdCaisse" Type="int" Nullable="true" />
-    <Property Name="IdDevise" Type="int" Nullable="true" />
-    <Property Name="IdModeReglement" Type="int" Nullable="true" />
-    <Property Name="Montant" Type="decimal" Nullable="true" Precision="18" Scale="3" />
-  </EntityType>
   <EntityType Name="Reglement">
     <Key>
       <PropertyRef Name="Id" />
@@ -274,6 +253,31 @@
     <Property Name="IdRetenu" Type="int" Nullable="true" />
     <Property Name="IdSuiviBancaire" Type="int" Nullable="true" />
     <Property Name="IdBonAPayer" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="DetailReglement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdBanque" Type="int" Nullable="true" />
+    <Property Name="IdCaisse" Type="int" Nullable="true" />
+    <Property Name="IdDevise" Type="int" Nullable="true" />
+    <Property Name="IdModeReglement" Type="int" Nullable="true" />
+    <Property Name="Montant" Type="decimal" Nullable="true" Precision="18" Scale="3" />
+    <Property Name="IdReglement" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fournisseur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaisonSocial" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Nom" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Prenom" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="FraisGeneraux" Type="decimal" Nullable="true" Precision="18" Scale="3" />
+    <Property Name="Solde" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="EstPhysique" Type="bit" Nullable="true" />
+    <Property Name="EstMorale" Type="bit" Nullable="true" />
   </EntityType>
   <Association Name="FK_RubriqueRetenu_Annexe">
     <End Role="Annexe" Type="Models.Store.Annexe" Multiplicity="0..1" />
@@ -359,15 +363,51 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Facture_Fournisseur">
-    <End Role="Fournisseur" Type="Models.Store.Fournisseur" Multiplicity="1" />
-    <End Role="Facture" Type="Models.Store.Facture" Multiplicity="*" />
+  <Association Name="FK_Reglement_BonAPayer">
+    <End Role="BonAPayer" Type="Models.Store.BonAPayer" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Models.Store.Reglement" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Fournisseur">
+      <Principal Role="BonAPayer">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Facture">
-        <PropertyRef Name="IdFournisseur" />
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdBonAPayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_Retenu">
+    <End Role="Retenu" Type="Models.Store.Retenu" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Models.Store.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Retenu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdRetenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reglement_SuiviBancaire">
+    <End Role="SuiviBancaire" Type="Models.Store.SuiviBancaire" Multiplicity="0..1" />
+    <End Role="Reglement" Type="Models.Store.Reglement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SuiviBancaire">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reglement">
+        <PropertyRef Name="IdSuiviBancaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReglementFacture_Reglement">
+    <End Role="Reglement" Type="Models.Store.Reglement" Multiplicity="1" />
+    <End Role="ReglementFacture" Type="Models.Store.ReglementFacture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reglement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReglementFacture">
+        <PropertyRef Name="IdReglement" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -419,51 +459,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reglement_BonAPayer">
-    <End Role="BonAPayer" Type="Models.Store.BonAPayer" Multiplicity="0..1" />
-    <End Role="Reglement" Type="Models.Store.Reglement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BonAPayer">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reglement">
-        <PropertyRef Name="IdBonAPayer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Reglement_Retenu">
-    <End Role="Retenu" Type="Models.Store.Retenu" Multiplicity="0..1" />
-    <End Role="Reglement" Type="Models.Store.Reglement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Retenu">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reglement">
-        <PropertyRef Name="IdRetenu" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Reglement_SuiviBancaire">
-    <End Role="SuiviBancaire" Type="Models.Store.SuiviBancaire" Multiplicity="0..1" />
-    <End Role="Reglement" Type="Models.Store.Reglement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SuiviBancaire">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reglement">
-        <PropertyRef Name="IdSuiviBancaire" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReglementFacture_Reglement">
+  <Association Name="FK_DetailReglement_Reglement">
     <End Role="Reglement" Type="Models.Store.Reglement" Multiplicity="1" />
-    <End Role="ReglementFacture" Type="Models.Store.ReglementFacture" Multiplicity="*" />
+    <End Role="DetailReglement" Type="Models.Store.DetailReglement" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Reglement">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="ReglementFacture">
+      <Dependent Role="DetailReglement">
         <PropertyRef Name="IdReglement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facture_Fournisseur">
+    <End Role="Fournisseur" Type="Models.Store.Fournisseur" Multiplicity="1" />
+    <End Role="Facture" Type="Models.Store.Facture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fournisseur">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Facture">
+        <PropertyRef Name="IdFournisseur" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -709,10 +725,22 @@
             <End Role="RoleTechnique" EntitySet="RoleTechnique" />
             <End Role="FoncTechRole" EntitySet="FoncTechRole" />
           </AssociationSet>
-          <EntitySet Name="Fournisseur" EntityType="Models.Fournisseur" />
-          <AssociationSet Name="FK_Facture_Fournisseur" Association="Models.FK_Facture_Fournisseur">
-            <End Role="Fournisseur" EntitySet="Fournisseur" />
-            <End Role="Facture" EntitySet="Facture" />
+          <EntitySet Name="Reglement" EntityType="Models.Reglement" />
+          <AssociationSet Name="FK_Reglement_BonAPayer" Association="Models.FK_Reglement_BonAPayer">
+            <End Role="BonAPayer" EntitySet="BonAPayer" />
+            <End Role="Reglement" EntitySet="Reglement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reglement_Retenu" Association="Models.FK_Reglement_Retenu">
+            <End Role="Retenu" EntitySet="Retenu" />
+            <End Role="Reglement" EntitySet="Reglement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reglement_SuiviBancaire" Association="Models.FK_Reglement_SuiviBancaire">
+            <End Role="SuiviBancaire" EntitySet="SuiviBancaire" />
+            <End Role="Reglement" EntitySet="Reglement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReglementFacture_Reglement" Association="Models.FK_ReglementFacture_Reglement">
+            <End Role="Reglement" EntitySet="Reglement" />
+            <End Role="ReglementFacture" EntitySet="ReglementFacture" />
           </AssociationSet>
           <EntitySet Name="DetailReglement" EntityType="Models.DetailReglement" />
           <AssociationSet Name="FK_DetailReglement_Banque" Association="Models.FK_DetailReglement_Banque">
@@ -731,22 +759,14 @@
             <End Role="ModeReglement" EntitySet="ModeReglement" />
             <End Role="DetailReglement" EntitySet="DetailReglement" />
           </AssociationSet>
-          <EntitySet Name="Reglement" EntityType="Models.Reglement" />
-          <AssociationSet Name="FK_Reglement_BonAPayer" Association="Models.FK_Reglement_BonAPayer">
-            <End Role="BonAPayer" EntitySet="BonAPayer" />
+          <AssociationSet Name="FK_DetailReglement_Reglement" Association="Models.FK_DetailReglement_Reglement">
             <End Role="Reglement" EntitySet="Reglement" />
+            <End Role="DetailReglement" EntitySet="DetailReglement" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reglement_Retenu" Association="Models.FK_Reglement_Retenu">
-            <End Role="Retenu" EntitySet="Retenu" />
-            <End Role="Reglement" EntitySet="Reglement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reglement_SuiviBancaire" Association="Models.FK_Reglement_SuiviBancaire">
-            <End Role="SuiviBancaire" EntitySet="SuiviBancaire" />
-            <End Role="Reglement" EntitySet="Reglement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReglementFacture_Reglement" Association="Models.FK_ReglementFacture_Reglement">
-            <End Role="Reglement" EntitySet="Reglement" />
-            <End Role="ReglementFacture" EntitySet="ReglementFacture" />
+          <EntitySet Name="Fournisseur" EntityType="Models.Fournisseur" />
+          <AssociationSet Name="FK_Facture_Fournisseur" Association="Models.FK_Facture_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Facture" EntitySet="Facture" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Utilisateur">
@@ -810,30 +830,69 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Fournisseur">
+        <EntityType Name="Reglement">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RaisonSocial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FraisGeneraux" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Solde" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="EstPhysique" Type="Boolean" />
-          <Property Name="EstMorale" Type="Boolean" />
-          <Property Name="EcheanceDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Facture" Relationship="Models.FK_Facture_Fournisseur" FromRole="Fournisseur" ToRole="Facture" />
+          <Property Name="Echeance" Type="DateTime" Precision="3" />
+          <Property Name="DateValidation" Type="DateTime" Precision="3" />
+          <Property Name="ValiderPar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DateReglement" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdRetenu" Type="Int32" />
+          <Property Name="IdSuiviBancaire" Type="Int32" />
+          <Property Name="IdBonAPayer" Type="Int32" />
+          <NavigationProperty Name="BonAPayer" Relationship="Models.FK_Reglement_BonAPayer" FromRole="Reglement" ToRole="BonAPayer" />
+          <NavigationProperty Name="Retenu" Relationship="Models.FK_Reglement_Retenu" FromRole="Reglement" ToRole="Retenu" />
+          <NavigationProperty Name="SuiviBancaire" Relationship="Models.FK_Reglement_SuiviBancaire" FromRole="Reglement" ToRole="SuiviBancaire" />
+          <NavigationProperty Name="ReglementFacture" Relationship="Models.FK_ReglementFacture_Reglement" FromRole="Reglement" ToRole="ReglementFacture" />
+          <NavigationProperty Name="DetailReglement" Relationship="Models.FK_DetailReglement_Reglement" FromRole="Reglement" ToRole="DetailReglement" />
         </EntityType>
-        <Association Name="FK_Facture_Fournisseur">
-          <End Type="Models.Fournisseur" Role="Fournisseur" Multiplicity="1" />
-          <End Type="Models.Facture" Role="Facture" Multiplicity="*" />
+        <Association Name="FK_Reglement_BonAPayer">
+          <End Type="Models.BonAPayer" Role="BonAPayer" Multiplicity="0..1" />
+          <End Type="Models.Reglement" Role="Reglement" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Fournisseur">
+            <Principal Role="BonAPayer">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Facture">
-              <PropertyRef Name="IdFournisseur" />
+            <Dependent Role="Reglement">
+              <PropertyRef Name="IdBonAPayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reglement_Retenu">
+          <End Type="Models.Retenu" Role="Retenu" Multiplicity="0..1" />
+          <End Type="Models.Reglement" Role="Reglement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Retenu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reglement">
+              <PropertyRef Name="IdRetenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reglement_SuiviBancaire">
+          <End Type="Models.SuiviBancaire" Role="SuiviBancaire" Multiplicity="0..1" />
+          <End Type="Models.Reglement" Role="Reglement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuiviBancaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reglement">
+              <PropertyRef Name="IdSuiviBancaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReglementFacture_Reglement">
+          <End Type="Models.Reglement" Role="Reglement" Multiplicity="1" />
+          <End Type="Models.ReglementFacture" Role="ReglementFacture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reglement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReglementFacture">
+              <PropertyRef Name="IdReglement" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -847,10 +906,12 @@
           <Property Name="IdDevise" Type="Int32" />
           <Property Name="IdModeReglement" Type="Int32" />
           <Property Name="Montant" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="IdReglement" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Banque" Relationship="Models.FK_DetailReglement_Banque" FromRole="DetailReglement" ToRole="Banque" />
           <NavigationProperty Name="Caisse" Relationship="Models.FK_DetailReglement_Caisse" FromRole="DetailReglement" ToRole="Caisse" />
           <NavigationProperty Name="Devise" Relationship="Models.FK_DetailReglement_Devise" FromRole="DetailReglement" ToRole="Devise" />
           <NavigationProperty Name="ModeReglement" Relationship="Models.FK_DetailReglement_ModeReglement" FromRole="DetailReglement" ToRole="ModeReglement" />
+          <NavigationProperty Name="Reglement" Relationship="Models.FK_DetailReglement_Reglement" FromRole="DetailReglement" ToRole="Reglement" />
         </EntityType>
         <Association Name="FK_DetailReglement_Banque">
           <End Type="Models.Banque" Role="Banque" Multiplicity="0..1" />
@@ -900,68 +961,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Reglement">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Echeance" Type="DateTime" Precision="3" />
-          <Property Name="DateValidation" Type="DateTime" Precision="3" />
-          <Property Name="ValiderPar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="DateReglement" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="IdRetenu" Type="Int32" />
-          <Property Name="IdSuiviBancaire" Type="Int32" />
-          <Property Name="IdBonAPayer" Type="Int32" />
-          <NavigationProperty Name="BonAPayer" Relationship="Models.FK_Reglement_BonAPayer" FromRole="Reglement" ToRole="BonAPayer" />
-          <NavigationProperty Name="Retenu" Relationship="Models.FK_Reglement_Retenu" FromRole="Reglement" ToRole="Retenu" />
-          <NavigationProperty Name="SuiviBancaire" Relationship="Models.FK_Reglement_SuiviBancaire" FromRole="Reglement" ToRole="SuiviBancaire" />
-          <NavigationProperty Name="ReglementFacture" Relationship="Models.FK_ReglementFacture_Reglement" FromRole="Reglement" ToRole="ReglementFacture" />
-        </EntityType>
-        <Association Name="FK_Reglement_BonAPayer">
-          <End Type="Models.BonAPayer" Role="BonAPayer" Multiplicity="0..1" />
-          <End Type="Models.Reglement" Role="Reglement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BonAPayer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reglement">
-              <PropertyRef Name="IdBonAPayer" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reglement_Retenu">
-          <End Type="Models.Retenu" Role="Retenu" Multiplicity="0..1" />
-          <End Type="Models.Reglement" Role="Reglement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Retenu">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reglement">
-              <PropertyRef Name="IdRetenu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reglement_SuiviBancaire">
-          <End Type="Models.SuiviBancaire" Role="SuiviBancaire" Multiplicity="0..1" />
-          <End Type="Models.Reglement" Role="Reglement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SuiviBancaire">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reglement">
-              <PropertyRef Name="IdSuiviBancaire" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReglementFacture_Reglement">
+        <Association Name="FK_DetailReglement_Reglement">
           <End Type="Models.Reglement" Role="Reglement" Multiplicity="1" />
-          <End Type="Models.ReglementFacture" Role="ReglementFacture" Multiplicity="*" />
+          <End Type="Models.DetailReglement" Role="DetailReglement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Reglement">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ReglementFacture">
+            <Dependent Role="DetailReglement">
               <PropertyRef Name="IdReglement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Fournisseur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaisonSocial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FraisGeneraux" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Solde" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EstPhysique" Type="Boolean" />
+          <Property Name="EstMorale" Type="Boolean" />
+          <NavigationProperty Name="Facture" Relationship="Models.FK_Facture_Fournisseur" FromRole="Fournisseur" ToRole="Facture" />
+        </EntityType>
+        <Association Name="FK_Facture_Fournisseur">
+          <End Type="Models.Fournisseur" Role="Fournisseur" Multiplicity="1" />
+          <End Type="Models.Facture" Role="Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Facture">
+              <PropertyRef Name="IdFournisseur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1134,18 +1168,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Fournisseur">
-      <EntityTypeMapping TypeName="IsTypeOf(Models.Fournisseur)">
-        <MappingFragment StoreEntitySet="Fournisseur">
+    <EntitySetMapping Name="Reglement">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Reglement)">
+        <MappingFragment StoreEntitySet="Reglement">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="RaisonSocial" ColumnName="RaisonSocial" />
-          <ScalarProperty Name="Nom" ColumnName="Nom" />
-          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
-          <ScalarProperty Name="FraisGeneraux" ColumnName="FraisGeneraux" />
-          <ScalarProperty Name="Solde" ColumnName="Solde" />
-          <ScalarProperty Name="EstPhysique" ColumnName="EstPhysique" />
-          <ScalarProperty Name="EstMorale" ColumnName="EstMorale" />
-          <ScalarProperty Name="EcheanceDate" ColumnName="EcheanceDate" />
+          <ScalarProperty Name="Echeance" ColumnName="Echeance" />
+          <ScalarProperty Name="DateValidation" ColumnName="DateValidation" />
+          <ScalarProperty Name="ValiderPar" ColumnName="ValiderPar" />
+          <ScalarProperty Name="DateReglement" ColumnName="DateReglement" />
+          <ScalarProperty Name="IdRetenu" ColumnName="IdRetenu" />
+          <ScalarProperty Name="IdSuiviBancaire" ColumnName="IdSuiviBancaire" />
+          <ScalarProperty Name="IdBonAPayer" ColumnName="IdBonAPayer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1158,20 +1191,21 @@
           <ScalarProperty Name="IdDevise" ColumnName="IdDevise" />
           <ScalarProperty Name="IdModeReglement" ColumnName="IdModeReglement" />
           <ScalarProperty Name="Montant" ColumnName="Montant" />
+          <ScalarProperty Name="IdReglement" ColumnName="IdReglement" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Reglement">
-      <EntityTypeMapping TypeName="IsTypeOf(Models.Reglement)">
-        <MappingFragment StoreEntitySet="Reglement">
+    <EntitySetMapping Name="Fournisseur">
+      <EntityTypeMapping TypeName="IsTypeOf(Models.Fournisseur)">
+        <MappingFragment StoreEntitySet="Fournisseur">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Echeance" ColumnName="Echeance" />
-          <ScalarProperty Name="DateValidation" ColumnName="DateValidation" />
-          <ScalarProperty Name="ValiderPar" ColumnName="ValiderPar" />
-          <ScalarProperty Name="DateReglement" ColumnName="DateReglement" />
-          <ScalarProperty Name="IdRetenu" ColumnName="IdRetenu" />
-          <ScalarProperty Name="IdSuiviBancaire" ColumnName="IdSuiviBancaire" />
-          <ScalarProperty Name="IdBonAPayer" ColumnName="IdBonAPayer" />
+          <ScalarProperty Name="RaisonSocial" ColumnName="RaisonSocial" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="FraisGeneraux" ColumnName="FraisGeneraux" />
+          <ScalarProperty Name="Solde" ColumnName="Solde" />
+          <ScalarProperty Name="EstPhysique" ColumnName="EstPhysique" />
+          <ScalarProperty Name="EstMorale" ColumnName="EstMorale" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

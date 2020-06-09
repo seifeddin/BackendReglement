@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/09/2020 10:34:26
+-- Date Created: 06/09/2020 11:10:17
 -- Generated from EDMX file: C:\PFE_ACHREF\BackendReglement\ENGAGEMENT.ENTITY\DbContext.edmx
 -- --------------------------------------------------
 
@@ -28,6 +28,9 @@ IF OBJECT_ID(N'[dbo].[FK_DetailReglement_Devise]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_DetailReglement_ModeReglement]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DetailReglement] DROP CONSTRAINT [FK_DetailReglement_ModeReglement];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DetailReglement_Reglement]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetailReglement] DROP CONSTRAINT [FK_DetailReglement_Reglement];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Facture_Fournisseur]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Facture] DROP CONSTRAINT [FK_Facture_Fournisseur];
@@ -279,31 +282,6 @@ CREATE TABLE [dbo].[FoncTechRole] (
 );
 GO
 
--- Creating table 'Fournisseur'
-CREATE TABLE [dbo].[Fournisseur] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [RaisonSocial] nvarchar(50)  NULL,
-    [Nom] nvarchar(50)  NULL,
-    [Prenom] nvarchar(50)  NULL,
-    [FraisGeneraux] decimal(18,3)  NULL,
-    [Solde] decimal(18,0)  NULL,
-    [EstPhysique] bit  NULL,
-    [EstMorale] bit  NULL,
-    [EcheanceDate] datetime  NULL
-);
-GO
-
--- Creating table 'DetailReglement'
-CREATE TABLE [dbo].[DetailReglement] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [IdBanque] int  NULL,
-    [IdCaisse] int  NULL,
-    [IdDevise] int  NULL,
-    [IdModeReglement] int  NULL,
-    [Montant] decimal(18,3)  NULL
-);
-GO
-
 -- Creating table 'Reglement'
 CREATE TABLE [dbo].[Reglement] (
     [Id] int IDENTITY(1,1) NOT NULL,
@@ -314,6 +292,31 @@ CREATE TABLE [dbo].[Reglement] (
     [IdRetenu] int  NULL,
     [IdSuiviBancaire] int  NULL,
     [IdBonAPayer] int  NULL
+);
+GO
+
+-- Creating table 'DetailReglement'
+CREATE TABLE [dbo].[DetailReglement] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [IdBanque] int  NULL,
+    [IdCaisse] int  NULL,
+    [IdDevise] int  NULL,
+    [IdModeReglement] int  NULL,
+    [Montant] decimal(18,3)  NULL,
+    [IdReglement] int  NOT NULL
+);
+GO
+
+-- Creating table 'Fournisseur'
+CREATE TABLE [dbo].[Fournisseur] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [RaisonSocial] nvarchar(50)  NULL,
+    [Nom] nvarchar(50)  NULL,
+    [Prenom] nvarchar(50)  NULL,
+    [FraisGeneraux] decimal(18,3)  NULL,
+    [Solde] decimal(18,0)  NULL,
+    [EstPhysique] bit  NULL,
+    [EstMorale] bit  NULL
 );
 GO
 
@@ -417,9 +420,9 @@ ADD CONSTRAINT [PK_FoncTechRole]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Fournisseur'
-ALTER TABLE [dbo].[Fournisseur]
-ADD CONSTRAINT [PK_Fournisseur]
+-- Creating primary key on [Id] in table 'Reglement'
+ALTER TABLE [dbo].[Reglement]
+ADD CONSTRAINT [PK_Reglement]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -429,9 +432,9 @@ ADD CONSTRAINT [PK_DetailReglement]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Reglement'
-ALTER TABLE [dbo].[Reglement]
-ADD CONSTRAINT [PK_Reglement]
+-- Creating primary key on [Id] in table 'Fournisseur'
+ALTER TABLE [dbo].[Fournisseur]
+ADD CONSTRAINT [PK_Fournisseur]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -544,19 +547,64 @@ ON [dbo].[FoncTechRole]
     ([IdTechRole]);
 GO
 
--- Creating foreign key on [IdFournisseur] in table 'Facture'
-ALTER TABLE [dbo].[Facture]
-ADD CONSTRAINT [FK_Facture_Fournisseur]
-    FOREIGN KEY ([IdFournisseur])
-    REFERENCES [dbo].[Fournisseur]
+-- Creating foreign key on [IdBonAPayer] in table 'Reglement'
+ALTER TABLE [dbo].[Reglement]
+ADD CONSTRAINT [FK_Reglement_BonAPayer]
+    FOREIGN KEY ([IdBonAPayer])
+    REFERENCES [dbo].[BonAPayer]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_Facture_Fournisseur'
-CREATE INDEX [IX_FK_Facture_Fournisseur]
-ON [dbo].[Facture]
-    ([IdFournisseur]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_Reglement_BonAPayer'
+CREATE INDEX [IX_FK_Reglement_BonAPayer]
+ON [dbo].[Reglement]
+    ([IdBonAPayer]);
+GO
+
+-- Creating foreign key on [IdRetenu] in table 'Reglement'
+ALTER TABLE [dbo].[Reglement]
+ADD CONSTRAINT [FK_Reglement_Retenu]
+    FOREIGN KEY ([IdRetenu])
+    REFERENCES [dbo].[Retenu]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Reglement_Retenu'
+CREATE INDEX [IX_FK_Reglement_Retenu]
+ON [dbo].[Reglement]
+    ([IdRetenu]);
+GO
+
+-- Creating foreign key on [IdSuiviBancaire] in table 'Reglement'
+ALTER TABLE [dbo].[Reglement]
+ADD CONSTRAINT [FK_Reglement_SuiviBancaire]
+    FOREIGN KEY ([IdSuiviBancaire])
+    REFERENCES [dbo].[SuiviBancaire]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Reglement_SuiviBancaire'
+CREATE INDEX [IX_FK_Reglement_SuiviBancaire]
+ON [dbo].[Reglement]
+    ([IdSuiviBancaire]);
+GO
+
+-- Creating foreign key on [IdReglement] in table 'ReglementFacture'
+ALTER TABLE [dbo].[ReglementFacture]
+ADD CONSTRAINT [FK_ReglementFacture_Reglement]
+    FOREIGN KEY ([IdReglement])
+    REFERENCES [dbo].[Reglement]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReglementFacture_Reglement'
+CREATE INDEX [IX_FK_ReglementFacture_Reglement]
+ON [dbo].[ReglementFacture]
+    ([IdReglement]);
 GO
 
 -- Creating foreign key on [IdBanque] in table 'DetailReglement'
@@ -619,64 +667,34 @@ ON [dbo].[DetailReglement]
     ([IdModeReglement]);
 GO
 
--- Creating foreign key on [IdBonAPayer] in table 'Reglement'
-ALTER TABLE [dbo].[Reglement]
-ADD CONSTRAINT [FK_Reglement_BonAPayer]
-    FOREIGN KEY ([IdBonAPayer])
-    REFERENCES [dbo].[BonAPayer]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Reglement_BonAPayer'
-CREATE INDEX [IX_FK_Reglement_BonAPayer]
-ON [dbo].[Reglement]
-    ([IdBonAPayer]);
-GO
-
--- Creating foreign key on [IdRetenu] in table 'Reglement'
-ALTER TABLE [dbo].[Reglement]
-ADD CONSTRAINT [FK_Reglement_Retenu]
-    FOREIGN KEY ([IdRetenu])
-    REFERENCES [dbo].[Retenu]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Reglement_Retenu'
-CREATE INDEX [IX_FK_Reglement_Retenu]
-ON [dbo].[Reglement]
-    ([IdRetenu]);
-GO
-
--- Creating foreign key on [IdSuiviBancaire] in table 'Reglement'
-ALTER TABLE [dbo].[Reglement]
-ADD CONSTRAINT [FK_Reglement_SuiviBancaire]
-    FOREIGN KEY ([IdSuiviBancaire])
-    REFERENCES [dbo].[SuiviBancaire]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Reglement_SuiviBancaire'
-CREATE INDEX [IX_FK_Reglement_SuiviBancaire]
-ON [dbo].[Reglement]
-    ([IdSuiviBancaire]);
-GO
-
--- Creating foreign key on [IdReglement] in table 'ReglementFacture'
-ALTER TABLE [dbo].[ReglementFacture]
-ADD CONSTRAINT [FK_ReglementFacture_Reglement]
+-- Creating foreign key on [IdReglement] in table 'DetailReglement'
+ALTER TABLE [dbo].[DetailReglement]
+ADD CONSTRAINT [FK_DetailReglement_Reglement]
     FOREIGN KEY ([IdReglement])
     REFERENCES [dbo].[Reglement]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_ReglementFacture_Reglement'
-CREATE INDEX [IX_FK_ReglementFacture_Reglement]
-ON [dbo].[ReglementFacture]
+-- Creating non-clustered index for FOREIGN KEY 'FK_DetailReglement_Reglement'
+CREATE INDEX [IX_FK_DetailReglement_Reglement]
+ON [dbo].[DetailReglement]
     ([IdReglement]);
+GO
+
+-- Creating foreign key on [IdFournisseur] in table 'Facture'
+ALTER TABLE [dbo].[Facture]
+ADD CONSTRAINT [FK_Facture_Fournisseur]
+    FOREIGN KEY ([IdFournisseur])
+    REFERENCES [dbo].[Fournisseur]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Facture_Fournisseur'
+CREATE INDEX [IX_FK_Facture_Fournisseur]
+ON [dbo].[Facture]
+    ([IdFournisseur]);
 GO
 
 -- --------------------------------------------------
