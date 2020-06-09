@@ -51,10 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implements\BanqueRepository.cs" />
+    <Compile Include="Implements\CaisseRepository.cs" />
     <Compile Include="Implements\FacturesRepository.cs" />
     <Compile Include="Implements\FournisseursRepository.cs" />
+    <Compile Include="Implements\ModeReglementRepository.cs" />
+    <Compile Include="Interfaces\IBanqueRepository.cs" />
+    <Compile Include="Interfaces\ICaisseRepository.cs" />
     <Compile Include="Interfaces\IFacturesRepository.cs" />
     <Compile Include="Interfaces\IFournisseursRepository.cs" />
+    <Compile Include="Interfaces\IModeReglementRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>
