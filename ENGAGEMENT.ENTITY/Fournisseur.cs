@@ -28,7 +28,6 @@ namespace ENGAGEMENT.ENTITY
         public Nullable<decimal> Solde { get; set; }
         public Nullable<bool> EstPhysique { get; set; }
         public Nullable<bool> EstMorale { get; set; }
-        public Nullable<System.DateTime> EcheanceDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facture> Facture { get; set; }
