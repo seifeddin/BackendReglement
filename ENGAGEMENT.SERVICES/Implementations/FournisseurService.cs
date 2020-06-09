@@ -25,10 +25,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
         {
            return fournisseurRepository.GetAll().Select(x => this._mapper.Map<FournisseurDto>(x)).ToList();
         }
+
         public List<LookupDto> GetLookupFournisseurs()
         {
-          var retour=  fournisseurRepository.GetAll().Select(x => new LookupDto { Id = x.Id, Designation = x.Nom }).ToList();
-            return retour;
+          return fournisseurRepository.GetAll().Select(x => new LookupDto { Id = x.Id, Designation = x.Nom }).ToList();
         }
 
         

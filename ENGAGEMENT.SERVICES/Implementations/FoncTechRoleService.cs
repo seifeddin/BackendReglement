@@ -9,10 +9,10 @@ using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.SERVICES.Implementations
 {
-    public class BanqueService : CommonService<Banque>, IBanqueService
+    public class FoncTechRoleService : CommonService<FoncTechRole>, IFoncTechRoleService
     {
-        private readonly IBanqueRepository repository;
-        public BanqueService(IBanqueRepository repository) : base(repository)
+        private readonly IFoncTechRoleRepository repository;
+        public FoncTechRoleService(IFoncTechRoleRepository repository) : base(repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }

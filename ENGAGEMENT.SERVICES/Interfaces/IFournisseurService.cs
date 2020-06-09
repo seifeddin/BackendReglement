@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace ENGAGEMENT.SERVICES.Interfaces
 {
-   
-
     public interface IFournisseurService : ICommonService<Fournisseur>
     {
         IEnumerable<FournisseurDto> GetAllFournisseurs();

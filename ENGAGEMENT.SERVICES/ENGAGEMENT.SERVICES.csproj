@@ -44,17 +44,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\AnnexeService.cs" />
     <Compile Include="Implementations\BanqueService.cs" />
+    <Compile Include="Implementations\BonAPayerService.cs" />
     <Compile Include="Implementations\CaisseService.cs" />
     <Compile Include="Implementations\CommonService.cs" />
+    <Compile Include="Implementations\DetailReglementService.cs" />
+    <Compile Include="Implementations\DeviseService.cs" />
     <Compile Include="Implementations\FactureService.cs" />
+    <Compile Include="Implementations\FoncTechRoleService.cs" />
     <Compile Include="Implementations\FournisseurService.cs" />
     <Compile Include="Implementations\ModeReglementService.cs" />
+    <Compile Include="Implementations\ReglementFactureService.cs" />
+    <Compile Include="Implementations\ReglementService.cs" />
+    <Compile Include="Implementations\RetenuService.cs" />
+    <Compile Include="Implementations\RoleFonctionnelService.cs" />
+    <Compile Include="Implementations\RoleTechniqueService.cs" />
+    <Compile Include="Implementations\RubriqueRetenuService.cs" />
+    <Compile Include="Implementations\RubriqueService.cs" />
+    <Compile Include="Implementations\SuiviBancaireSevice.cs" />
+    <Compile Include="Implementations\UtilisateurService.cs" />
+    <Compile Include="Interfaces\IAnnexeService.cs" />
     <Compile Include="Interfaces\IBanqueService.cs" />
+    <Compile Include="Interfaces\IBonAPayerService.cs" />
+    <Compile Include="Interfaces\ICaisseService.cs" />
     <Compile Include="Interfaces\ICommonService.cs" />
+    <Compile Include="Interfaces\IDetailReglementService.cs" />
+    <Compile Include="Interfaces\IDeviseService.cs" />
     <Compile Include="Interfaces\IFactureService.cs" />
+    <Compile Include="Interfaces\IFoncTechRoleService.cs" />
     <Compile Include="Interfaces\IFournisseurService.cs" />
     <Compile Include="Interfaces\IModeReglementService.cs" />
+    <Compile Include="Interfaces\IReglementFactureService.cs" />
+    <Compile Include="Interfaces\IReglementService.cs" />
+    <Compile Include="Interfaces\IRetenuService.cs" />
+    <Compile Include="Interfaces\IRoleFonctionnelService.cs" />
+    <Compile Include="Interfaces\IRoleTechniqueService.cs" />
+    <Compile Include="Interfaces\IRubriqueRetenuService.cs" />
+    <Compile Include="Interfaces\IRubriqueService.cs" />
+    <Compile Include="Interfaces\ISuiviBancaireSevice.cs" />
+    <Compile Include="Interfaces\IUtilisateurService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

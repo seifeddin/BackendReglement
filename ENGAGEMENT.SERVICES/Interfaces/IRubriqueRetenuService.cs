@@ -7,7 +7,8 @@ using ENGAGEMENT.ENTITY;
 
 namespace ENGAGEMENT.SERVICES.Interfaces
 {
-    public interface IBanqueService : ICommonService<Banque>
+    public interface IRubriqueRetenuService : ICommonService<RubriqueRetenu>
     {
+
     }
 }
