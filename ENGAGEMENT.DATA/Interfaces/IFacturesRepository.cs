@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace ENGAGEMENT.DATA.Interfaces
 {
    public interface IFacturesRepository :IRepository<Facture>
-    {
-    }
+   {
+   }
 }

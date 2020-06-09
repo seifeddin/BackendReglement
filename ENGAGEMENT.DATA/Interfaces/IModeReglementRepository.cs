@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ENGAGEMENT.ENTITY;
 
 namespace ENGAGEMENT.DATA.Interfaces
 {
-    interface IModeReglementRepository
+    public interface IModeReglementRepository : IRepository<ModeReglement>
     {
     }
 }

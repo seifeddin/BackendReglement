@@ -56,6 +56,7 @@
     <Compile Include="Implements\FacturesRepository.cs" />
     <Compile Include="Implements\FournisseursRepository.cs" />
     <Compile Include="Implements\ModeReglementRepository.cs" />
+    <Compile Include="Interfaces\IAnnexeRepository.cs" />
     <Compile Include="Interfaces\IBanqueRepository.cs" />
     <Compile Include="Interfaces\ICaisseRepository.cs" />
     <Compile Include="Interfaces\IFacturesRepository.cs" />

@@ -7,7 +7,7 @@ using ENGAGEMENT.ENTITY;
 
 namespace ENGAGEMENT.DATA.Interfaces
 {
-    public interface ICaisseRepository : IRepository<Caisse>
+    public interface IAnnexeRepository : IRepository<Annexe>
     {
     }
 }
