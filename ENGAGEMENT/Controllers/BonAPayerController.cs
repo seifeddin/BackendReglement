@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
@@ -12,35 +14,50 @@ namespace ENGAGEMENT.Controllers
     public class BonAPayerController : ApiController
     {
         private readonly IBonAPayerService service;
-        public BonAPayerController(IBonAPayerService service)
+        private readonly IMapper mapper;
+        public BonAPayerController(IBonAPayerService service, IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         // GET: api/BonAPayer
-        public IEnumerable<string> Get()
+        public IEnumerable<BonAPayerDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.service.GetAll().Select(this.mapper.Map<BonAPayerDto>);
         }
 
         // GET: api/BonAPayer/5
-        public string Get(int id)
+        public BonAPayerDto Get(int id)
         {
-            return "value";
+            return this.mapper.Map<BonAPayerDto>(this.service.GetById(id));
         }
 
         // POST: api/BonAPayer
-        public void Post([FromBody]string value)
+        public BonAPayerDto Post([FromBody]BonAPayerDto bonAPayerDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(bonAPayerDto);
+            }
+
+            return null;
         }
 
         // PUT: api/BonAPayer/5
-        public void Put(int id, [FromBody]string value)
+        public BonAPayerDto Put([FromUri]int id, [FromBody]BonAPayerDto bonAPayerDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(bonAPayerDto);
+            }
+
+            return null;
         }
 
         // DELETE: api/BonAPayer/5
         public void Delete(int id)
         {
+            this.service.Delete(id);
         }
     }
 }

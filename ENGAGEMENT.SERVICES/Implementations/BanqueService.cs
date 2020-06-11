@@ -18,7 +18,7 @@ namespace ENGAGEMENT.SERVICES.Implementations
         public BanqueService(IBanqueRepository repository, IMapper mapper) : base(repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            this.repository = repository ?? throw new ArgumentNullException(nameof(mapper));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         public BanqueDto Insert(BanqueDto banqueDto)
         {
