@@ -10,13 +10,15 @@ namespace ENGAGEMENT.CORE.Dto
     {
         public int Id { get; set; }
         public string Reference { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<System.DateTime> Echeance { get; set; }
-        public Nullable<decimal> MontantTotale { get; set; }
-        public Nullable<decimal> MontantDev { get; set; }
-        public Nullable<decimal> MontantRegle { get; set; }
-        public Nullable<decimal> MontantReste { get; set; }
+        public DateTime? Date { get; set; }
+        public DateTime? Echeance { get; set; }
+        public decimal? MontantTotale { get; set; }
+        public decimal? MontantDev { get; set; }
+        public decimal? MontantRegle { get; set; }
+        public decimal? MontantReste { get; set; }
         public string Statut { get; set; }
         public int IdFournisseur { get; set; }
+        public List<ReglementFactureDto> ReglementFactures { get; set; }
+        public virtual FournisseurDto Fournisseur { get; set; }
     }
 }
