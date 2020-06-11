@@ -86,6 +86,24 @@ namespace ENGAGEMENT
             // We must register the custom converter also the system not able to registered automatic
             builder.RegisterType<FournisseurToFournisseurDtoConverter>().AsSelf();
             builder.RegisterType<FactureToFactureDtoConverter>().AsSelf();
+            builder.RegisterType<AnnexeToAnnexeDtoConverter>().AsSelf();
+            builder.RegisterType<BanqueToBanqueDtoConverter>().AsSelf();
+            builder.RegisterType<CaisseToCaisseDtoConverter>().AsSelf();
+            builder.RegisterType<DetailReglementToDetailReglementDtoConverter>().AsSelf();
+            builder.RegisterType<DeviseToDeviseDtoConverter>().AsSelf();
+            builder.RegisterType<FoncTechRoleToFoncTechRoleDtoConverter>().AsSelf();
+            builder.RegisterType<ModeReglementToModeReglementDtoConverter>().AsSelf();
+            builder.RegisterType<ReglementToReglementDtoConverter>().AsSelf();
+            builder.RegisterType<RetenuToRetenuDtoConverter>().AsSelf();
+            builder.RegisterType<ReglementFactureToReglementFactureDtoConverter>().AsSelf();
+            builder.RegisterType<RoleFonctionnelToRoleFonctionnelDtoConverter>().AsSelf();
+            builder.RegisterType<RoleTechniqueToRoleTechniqueDtoConverter>().AsSelf();
+            builder.RegisterType<RubriqueToRubriqueDtoConverter>().AsSelf();
+            builder.RegisterType<RubriqueRetenuToRubriqueRetenuDtoConverter>().AsSelf();
+            builder.RegisterType<SuiviBancaireToSuiviBancaireDtoConverter>().AsSelf();
+            builder.RegisterType<UtilisateurToUtilisateurDtoConverter>().AsSelf();
+            builder.RegisterType<BonAPayerToBonAPayerDtoConverter>().AsSelf();
+
 
             builder.Register(context => new MapperConfiguration(cfg =>
             {

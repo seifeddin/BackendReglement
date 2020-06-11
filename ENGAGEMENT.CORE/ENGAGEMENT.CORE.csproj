@@ -44,8 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\AnnexeToAnnexeDtoConverter.cs" />
+    <Compile Include="Converter\BanqueToBanqueDtoConverter.cs" />
+    <Compile Include="Converter\BonAPayerToBonAPayerDtoConverter.cs" />
+    <Compile Include="Converter\CaisseToCaisseDtoConverter.cs" />
+    <Compile Include="Converter\DetailReglementToDetailReglementDtoConverter.cs" />
+    <Compile Include="Converter\DeviseToDeviseDtoConverter.cs" />
     <Compile Include="Converter\FactureToFactureDtoConverter.cs" />
+    <Compile Include="Converter\FoncTechRoleToFoncTechRoleDtoConverter.cs" />
     <Compile Include="Converter\FournisseurToFournisseurDtoConverter.cs" />
+    <Compile Include="Converter\ModeReglementToModeReglementDtoConverter.cs" />
+    <Compile Include="Converter\ReglementFactureToReglementFactureDtoConverter.cs" />
+    <Compile Include="Converter\ReglementToReglementDtoConverter.cs" />
+    <Compile Include="Converter\RetenuToRetenuDtoConverter.cs" />
+    <Compile Include="Converter\RoleFonctionnelToRoleFonctionnelDtoConverter.cs" />
+    <Compile Include="Converter\RoleTechniqueToRoleTechniqueDtoConverter.cs" />
+    <Compile Include="Converter\RubriqueRetenuToRubriqueRetenuDtoConverter.cs" />
+    <Compile Include="Converter\RubriqueToRubriqueDtoConverter.cs" />
+    <Compile Include="Converter\SuiviBancaireToSuiviBancaireDtoConverter.cs" />
+    <Compile Include="Converter\UtilisateurToUtilisateurDtoConverter.cs" />
     <Compile Include="Dto\AnnexeDto.cs" />
     <Compile Include="Dto\BanqueDto.cs" />
     <Compile Include="Dto\BonAPayerDto.cs" />

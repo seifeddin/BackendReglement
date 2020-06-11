@@ -11,11 +11,16 @@ namespace ENGAGEMENT.CORE.Converter
 {
     public class FournisseurToFournisseurDtoConverter : ITypeConverter<Fournisseur, FournisseurDto>
     {
+        private readonly IMapper mapper;
+        public FournisseurToFournisseurDtoConverter(IMapper mapper)
+        {
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        }
         public FournisseurDto Convert(Fournisseur source, FournisseurDto destination, ResolutionContext context)
         {
             if(source==null)
             {
-                throw new NullReferenceException(nameof(source));
+                return null;
             }
             destination = new FournisseurDto();
             destination.Id = source.Id;
@@ -26,7 +31,7 @@ namespace ENGAGEMENT.CORE.Converter
             destination.FraisGeneraux = source.FraisGeneraux;
             destination.EstMorale = source.EstMorale;
             destination.EstPhysique = source.EstPhysique;
-
+            destination.Factures = source.Facture.Select(this.mapper.Map<FactureDto>).ToList();
 
             return destination;
             
