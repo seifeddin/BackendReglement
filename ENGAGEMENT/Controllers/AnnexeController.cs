@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
@@ -12,26 +14,32 @@ namespace ENGAGEMENT.Controllers
     public class AnnexeController : ApiController
     {
         private readonly IAnnexeService service;
-        public AnnexeController(IAnnexeService service)
+        private readonly IMapper mapper;
+        public AnnexeController(IAnnexeService service, IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         // GET: api/Annexe
-        public IEnumerable<string> Get()
+        public IEnumerable<AnnexeDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.service.GetAll().Select(this.mapper.Map<AnnexeDto>);
         }
 
         // GET: api/Annexe/5
-        public string Get(int id)
+        public AnnexeDto Get(int id)
         {
-            return "value";
+            return this.mapper.Map<AnnexeDto>(this.service.GetById(id));
         }
 
         // POST: api/Annexe
-        public void Post([FromBody]string value)
+        public void Post([FromBody]AnnexeDto annexeDto)
         {
+            if (ModelState.IsValid)
+            {
+                //this.service.Insert(this.mapper.Map<Annexe>(annexeDto)); il faut changer le service pour utiliser DTO
+            }
         }
 
         // PUT: api/Annexe/5
