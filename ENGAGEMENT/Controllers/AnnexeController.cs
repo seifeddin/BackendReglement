@@ -34,12 +34,13 @@ namespace ENGAGEMENT.Controllers
         }
 
         // POST: api/Annexe
-        public void Post([FromBody]AnnexeDto annexeDto)
+        public AnnexeDto Post([FromBody]AnnexeDto annexeDto)
         {
             if (ModelState.IsValid)
             {
-                //this.service.Insert(this.mapper.Map<Annexe>(annexeDto)); il faut changer le service pour utiliser DTO
+               return this.service.Insert(annexeDto); 
             }
+            return null;
         }
 
         // PUT: api/Annexe/5

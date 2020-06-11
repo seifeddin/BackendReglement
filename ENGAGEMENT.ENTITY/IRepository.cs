@@ -10,8 +10,8 @@ namespace ENGAGEMENT.ENTITY
     {
         IEnumerable<T> GetAll();
         T GetById(object id);
-        void Insert(T obj);
-        void Update(T obj);
+        T Insert(T obj);
+        T Update(T obj);
         void Delete(object id);
         void Save();
     }

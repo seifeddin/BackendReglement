@@ -1,4 +1,5 @@
-﻿using ENGAGEMENT.ENTITY;
+﻿using AutoMapper;
+using ENGAGEMENT.ENTITY;
 using ENGAGEMENT.SERVICES.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace ENGAGEMENT.SERVICES.Implementations
         public CommonService(IRepository<T> repository)
         {
             this._repository = repository ?? throw new ArgumentNullException(nameof(repository));
+           
         }
 
         public void Delete(object id)
@@ -31,9 +33,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             return _repository.GetById(id);
         }
 
-        public void Insert(T obj)
+        public T Insert(T obj)
         {
             _repository.Insert(obj);
+            return obj;
         }
 
         public void Save()
@@ -41,9 +44,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             _repository.Save();
         }
 
-        public void Update(T obj)
+        public T Update(T obj)
         {
             _repository.Update(obj);
+            return obj;
         }
     }
 }
