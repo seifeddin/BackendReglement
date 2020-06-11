@@ -45,10 +45,12 @@ namespace ENGAGEMENT.DATA
             return table.Find(id);
         }
 
-        public void Insert(T obj)
+        public T Insert(T obj)
         {
             if (obj == null) throw new ArgumentNullException("entity");
             table.Add(obj);
+            this.Save();
+            return obj;
         }
 
         public void Save()
@@ -56,11 +58,13 @@ namespace ENGAGEMENT.DATA
             _context.SaveChanges();
         }
 
-        public void Update(T obj)
+        public T Update(T obj)
         {
             if (obj == null) throw new ArgumentNullException("entity");
             table.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
+            this.Save();
+            return obj;
         }
         
     }

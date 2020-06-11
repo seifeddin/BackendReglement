@@ -14,9 +14,11 @@ namespace ENGAGEMENT.SERVICES.Implementations
     public class BanqueService : CommonService<Banque>, IBanqueService
     {
         private readonly IBanqueRepository repository;
-        public BanqueService(IBanqueRepository repository, IMapper mapper) : base(repository, mapper)
+        private readonly IMapper mapper;
+        public BanqueService(IBanqueRepository repository, IMapper mapper) : base(repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.repository = repository ?? throw new ArgumentNullException(nameof(mapper));
         }
         public BanqueDto Insert(BanqueDto banqueDto)
         {
