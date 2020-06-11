@@ -4,11 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
 {
+    [RoutePrefix("api/RoleFonctionnel")]
     public class RoleFonctionnelController : ApiController
     {
+        private readonly IRoleFonctionnelService service;
+
+        public RoleFonctionnelController(IRoleFonctionnelService service)
+        {
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
+        }
         // GET: api/RoleFonctionnel
         public IEnumerable<string> Get()
         {

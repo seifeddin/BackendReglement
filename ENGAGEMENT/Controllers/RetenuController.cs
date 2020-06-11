@@ -4,11 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
 {
+    [RoutePrefix("api/Retenu")]
     public class RetenuController : ApiController
     {
+        private readonly IRetenuService service;
+
+        public RetenuController(IRetenuService service)
+        {
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
+        }
         // GET: api/Retenu
         public IEnumerable<string> Get()
         {

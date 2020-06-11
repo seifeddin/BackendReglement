@@ -4,11 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
 {
+    [RoutePrefix("api/Utilisateur")]
     public class UtilisateurController : ApiController
     {
+        private readonly IUtilisateurService service;
+
+        public UtilisateurController(IUtilisateurService service)
+        {
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
+        }
         // GET: api/Utilisateur
         public IEnumerable<string> Get()
         {

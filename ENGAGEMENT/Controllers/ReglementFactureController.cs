@@ -4,11 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
 {
+    [RoutePrefix("api/ReglementFacture")]
     public class ReglementFactureController : ApiController
     {
+        private readonly IReglementFactureService service;
+
+        public ReglementFactureController(IReglementFactureService service)
+        {
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
+        }
         // GET: api/ReglementFacture
         public IEnumerable<string> Get()
         {
