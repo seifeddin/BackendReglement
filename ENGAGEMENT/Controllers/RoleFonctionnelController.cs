@@ -34,7 +34,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         [HttpGet]
-        [Route("GetLookup", Name = "GetLookup")]
+        [Route("GetLookup", Name = "GetLookupRoleFonctionnel")]
         public List<LookupDto> GetLookup()
         {
             return this.service.GetLookupDto();
