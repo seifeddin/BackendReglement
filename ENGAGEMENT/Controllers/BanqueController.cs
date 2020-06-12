@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.SERVICES.Interfaces;
 
@@ -13,22 +14,24 @@ namespace ENGAGEMENT.Controllers
     public class BanqueController : ApiController
     {
         private readonly IBanqueService service;
+        private readonly IMapper mapper;
         
-        public BanqueController(IBanqueService service)
+        public BanqueController(IBanqueService service, IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         // GET: api/Banque
-        public IEnumerable<string> Get()
+        public IEnumerable<BanqueDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.service.GetAll().Select(this.mapper.Map<BanqueDto>);
         }
 
         // GET: api/Banque/5
-        public string Get(int id)
+        public BanqueDto Get(int id)
         {
-            return "value";
+            return this.mapper.Map<BanqueDto>(this.service.GetById(id));
         }
 
         [HttpGet]
@@ -37,20 +40,30 @@ namespace ENGAGEMENT.Controllers
         {
             return this.service.GetLookupDto();
         }
-
         // POST: api/Banque
-        public void Post([FromBody]string value)
+        public BanqueDto Post([FromBody]BanqueDto banqueDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(banqueDto);
+            }
+            return null;
         }
 
         // PUT: api/Banque/5
-        public void Put(int id, [FromBody]string value)
+        public BanqueDto Put(int id, [FromBody]BanqueDto banqueDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Update(banqueDto);
+            }
+            return null;
         }
 
         // DELETE: api/Banque/5
         public void Delete(int id)
         {
+            this.service.Delete(id);
         }
     }
 }

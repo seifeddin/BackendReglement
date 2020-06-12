@@ -50,13 +50,19 @@ namespace ENGAGEMENT.Controllers
         }
 
         // PUT: api/Annexe/5
-        public void Put(int id, [FromBody]string value)
+        public AnnexeDto Put(int id, [FromBody]AnnexeDto annexeDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Update(annexeDto);
+            }
+            return null;
         }
 
         // DELETE: api/Annexe/5
         public void Delete(int id)
         {
+            this.service.Delete(id);
         }
     }
 }
