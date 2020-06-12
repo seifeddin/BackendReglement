@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 
 namespace ENGAGEMENT.Controllers
 {
@@ -15,9 +16,11 @@ namespace ENGAGEMENT.Controllers
     public class FournisseurController : ApiController
     {
         public IFournisseurService service;
-        public FournisseurController(IFournisseurService service)
+        public readonly IMapper mapper;
+        public FournisseurController(IFournisseurService service, IMapper mapper)
         {
-            this.service = service;
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [HttpGet]
@@ -35,6 +38,45 @@ namespace ENGAGEMENT.Controllers
         public List<LookupDto> GetLookupFournisseur()
         {
             return this.service.GetLookupFournisseurs();
+        }
+        // GET: api/Fournisseur
+        public IEnumerable<FournisseurDto> Get()
+        {
+            return this.service.GetAll().Select(this.mapper.Map<FournisseurDto>);
+        }
+
+        // GET: api/Fournisseur/5
+        public FournisseurDto Get(int id)
+        {
+            return this.mapper.Map<FournisseurDto>(this.service.GetById(id));
+        }
+
+        // POST: api/Fournisseur
+        public FournisseurDto Post([FromBody]FournisseurDto fournisseurDto)
+        {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(fournisseurDto);
+            }
+
+            return null;
+        }
+
+        // PUT: api/Fournisseur/5
+        public FournisseurDto Put(int id, [FromBody]FournisseurDto fournisseurDto)
+        {
+            if (ModelState.IsValid)
+            {
+                return this.service.Update(fournisseurDto);
+            }
+
+            return null;
+        }
+
+        // DELETE: api/Fournisseur/5
+        public void Delete(int id)
+        {
+            this.service.Delete(id);
         }
     }
 }

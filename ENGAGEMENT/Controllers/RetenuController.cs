@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
@@ -12,36 +14,50 @@ namespace ENGAGEMENT.Controllers
     public class RetenuController : ApiController
     {
         private readonly IRetenuService service;
+        private readonly IMapper mapper;
 
         public RetenuController(IRetenuService service)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
         }
         // GET: api/Retenu
-        public IEnumerable<string> Get()
+        public IEnumerable<RetenuDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.service.GetAll().Select(this.mapper.Map<RetenuDto>);
         }
 
         // GET: api/Retenu/5
-        public string Get(int id)
+        public RetenuDto Get(int id)
         {
-            return "value";
+            return this.mapper.Map<RetenuDto>(this.service.GetById(id));
         }
 
         // POST: api/Retenu
-        public void Post([FromBody]string value)
+        public RetenuDto Post([FromBody]RetenuDto retenuDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(retenuDto);
+            }
+
+            return null;
         }
 
         // PUT: api/Retenu/5
-        public void Put(int id, [FromBody]string value)
+        public RetenuDto Put(int id, [FromBody]RetenuDto retenuDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Update(retenuDto);
+            }
+
+            return null;
         }
 
         // DELETE: api/Retenu/5
         public void Delete(int id)
         {
+            this.service.Delete(id);
         }
     }
 }

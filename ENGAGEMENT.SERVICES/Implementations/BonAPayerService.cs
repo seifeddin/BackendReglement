@@ -17,8 +17,8 @@ namespace ENGAGEMENT.SERVICES.Implementations
         private readonly IMapper mapper;
         public BonAPayerService(IBonAPayerRepository repository, IMapper mapper) : base(repository)
         {
-            this.repository = this.repository ?? throw new ArgumentNullException(nameof(repository));
-            this.mapper = this.mapper ?? throw new ArgumentNullException(nameof(mapper));
+            this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         public BonAPayerDto Insert(BonAPayerDto bonAPayerDto)
         {

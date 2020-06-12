@@ -30,7 +30,16 @@ namespace ENGAGEMENT.SERVICES.Implementations
         {
           return fournisseurRepository.GetAll().Select(x => new LookupDto { Id = x.Id, Designation = x.Nom }).ToList();
         }
+        public FournisseurDto Insert(FournisseurDto fournisseurDto)
+        {
+            Fournisseur fournisseur = this.fournisseurRepository.Insert(this._mapper.Map<Fournisseur>(fournisseurDto));
+            return this._mapper.Map<FournisseurDto>(fournisseur);
+        }
+        public FournisseurDto Update(FournisseurDto fournisseurDto)
+        {
+            Fournisseur fournisseur = this.fournisseurRepository.Update(this._mapper.Map<Fournisseur>(fournisseurDto));
+            return this._mapper.Map<FournisseurDto>(fournisseur);
+        }
 
-        
     }
 }

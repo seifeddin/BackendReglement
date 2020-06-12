@@ -4,44 +4,62 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
 {
+    [RoutePrefix("api/RoleTechnique")]
     public class RoleTechniqueController : ApiController
     {
         private readonly IRoleTechniqueService service;
+        private readonly IMapper mapper;
 
-        public RoleTechniqueController(IRoleTechniqueService service)
+        public RoleTechniqueController(IRoleTechniqueService service, IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         // GET: api/RoleTechnique
-        public IEnumerable<string> Get()
+        public IEnumerable<RoleTechniqueDto> Get()
         {
-            return new string[] {"value1", "value2"};
+            return this.service.GetAll().Select(this.mapper.Map<RoleTechniqueDto>);
         }
 
         // GET: api/RoleTechnique/5
-        public string Get(int id)
+        public RoleTechniqueDto Get(int id)
         {
-            return "value";
+            return this.mapper.Map<RoleTechniqueDto>(this.service.GetById(id));
         }
 
         // POST: api/RoleTechnique
-        public void Post([FromBody] string value)
+        public RoleTechniqueDto Post([FromBody]RoleTechniqueDto roleTechniqueDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(roleTechniqueDto);
+            }
+
+            return null;
         }
 
         // PUT: api/RoleTechnique/5
-        public void Put(int id, [FromBody] string value)
+        public RoleTechniqueDto Put(int id, [FromBody]RoleTechniqueDto roleTechniqueDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Update(roleTechniqueDto);
+            }
+
+            return null;
         }
 
         // DELETE: api/RoleTechnique/5
         public void Delete(int id)
         {
+            this.service.Delete(id);
         }
     }
 }

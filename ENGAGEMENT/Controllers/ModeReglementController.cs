@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
@@ -12,36 +14,51 @@ namespace ENGAGEMENT.Controllers
     public class ModeReglementController : ApiController
     {
         private readonly IModeReglementService service;
+        private readonly IMapper mapper;
 
-        public ModeReglementController(IModeReglementService service)
+        public ModeReglementController(IModeReglementService service, IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(service));
         }
         // GET: api/ModeReglement
-        public IEnumerable<string> Get()
+        public IEnumerable<ModeReglementDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.service.GetAll().Select(this.mapper.Map<ModeReglementDto>);
         }
 
         // GET: api/ModeReglement/5
-        public string Get(int id)
+        public ModeReglementDto Get(int id)
         {
-            return "value";
+            return this.mapper.Map<ModeReglementDto>(this.service.GetById(id));
         }
 
         // POST: api/ModeReglement
-        public void Post([FromBody]string value)
+        public ModeReglementDto Post([FromBody]ModeReglementDto modeReglementDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(modeReglementDto);
+            }
+
+            return null;
         }
 
         // PUT: api/ModeReglement/5
-        public void Put(int id, [FromBody]string value)
+        public ModeReglementDto Put(int id, [FromBody]ModeReglementDto modeReglementDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Update(modeReglementDto);
+            }
+
+            return null;
         }
 
         // DELETE: api/ModeReglement/5
         public void Delete(int id)
         {
+            this.service.Delete(id);
         }
     }
 }

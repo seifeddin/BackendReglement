@@ -18,7 +18,7 @@ namespace ENGAGEMENT.Controllers
         public ReglementController(IReglementService service,IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
-            this.service = service ?? throw new ArgumentNullException(nameof(mapper));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         // GET: api/Reglement
         public IEnumerable<ReglementDto> Get()
@@ -27,7 +27,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         // GET: api/Reglement/5
-        public ReglementDto Get([FromUri]int id)
+        public ReglementDto Get(int id)
         {
             return this.mapper.Map<ReglementDto>(this.service.GetById(id));
         }
@@ -44,7 +44,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         // PUT: api/Reglement/5
-        public ReglementDto Put([FromUri]int id, [FromBody]ReglementDto reglementDto)
+        public ReglementDto Put(int id, [FromBody]ReglementDto reglementDto)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         // DELETE: api/Reglement/5
-        public void Delete([FromUri] int id)
+        public void Delete(int id)
         {
             this.service.Delete(id);
         }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
@@ -12,36 +14,51 @@ namespace ENGAGEMENT.Controllers
     public class RoleFonctionnelController : ApiController
     {
         private readonly IRoleFonctionnelService service;
+        private readonly IMapper mapper;
 
-        public RoleFonctionnelController(IRoleFonctionnelService service)
+        public RoleFonctionnelController(IRoleFonctionnelService service, IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         // GET: api/RoleFonctionnel
-        public IEnumerable<string> Get()
+        public IEnumerable<RoleFonctionnelDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.service.GetAll().Select(this.mapper.Map<RoleFonctionnelDto>);
         }
 
         // GET: api/RoleFonctionnel/5
-        public string Get(int id)
+        public RoleFonctionnelDto Get(int id)
         {
-            return "value";
+            return this.mapper.Map<RoleFonctionnelDto>(this.service.GetById(id));
         }
 
         // POST: api/RoleFonctionnel
-        public void Post([FromBody]string value)
+        public RoleFonctionnelDto Post([FromBody]RoleFonctionnelDto roleFonctionnelDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(roleFonctionnelDto);
+            }
+
+            return null;
         }
 
         // PUT: api/RoleFonctionnel/5
-        public void Put(int id, [FromBody]string value)
+        public RoleFonctionnelDto Put(int id, [FromBody]RoleFonctionnelDto roleFonctionnelDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Update(roleFonctionnelDto);
+            }
+
+            return null;
         }
 
         // DELETE: api/RoleFonctionnel/5
         public void Delete(int id)
         {
+            this.service.Delete(id);
         }
     }
 }

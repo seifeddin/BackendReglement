@@ -11,5 +11,7 @@ namespace ENGAGEMENT.SERVICES.Interfaces
    public interface IFactureService:ICommonService<Facture>
     {
         IEnumerable<FactureDto> GetFacturesByFournisseur(int idFournisseur);
+        FactureDto Insert(FactureDto factureDto);
+        FactureDto Update(FactureDto factureDto);
     }
 }

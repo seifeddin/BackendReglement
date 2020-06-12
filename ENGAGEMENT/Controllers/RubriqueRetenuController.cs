@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
@@ -12,35 +14,50 @@ namespace ENGAGEMENT.Controllers
     public class RubriqueRetenuController : ApiController
     {
         private readonly IRubriqueRetenuService service;
-        public RubriqueRetenuController(IRubriqueRetenuService service)
+        private readonly IMapper mapper;
+        public RubriqueRetenuController(IRubriqueRetenuService service, IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         // GET: api/RubriqueRetenu
-        public IEnumerable<string> Get()
+        public IEnumerable<RubriqueRetenuDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.service.GetAll().Select(this.mapper.Map<RubriqueRetenuDto>);
         }
 
         // GET: api/RubriqueRetenu/5
-        public string Get(int id)
+        public RubriqueRetenuDto Get(int id)
         {
-            return "value";
+            return this.mapper.Map<RubriqueRetenuDto>(this.service.GetById(id));
         }
 
         // POST: api/RubriqueRetenu
-        public void Post([FromBody]string value)
+        public RubriqueRetenuDto Post([FromBody]RubriqueRetenuDto rubriqueRetenuDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Insert(rubriqueRetenuDto);
+            }
+
+            return null;
         }
 
         // PUT: api/RubriqueRetenu/5
-        public void Put(int id, [FromBody]string value)
+        public RubriqueRetenuDto Put(int id, [FromBody]RubriqueRetenuDto rubriqueRetenuDto)
         {
+            if (ModelState.IsValid)
+            {
+                return this.service.Update(rubriqueRetenuDto);
+            }
+
+            return null;
         }
 
         // DELETE: api/RubriqueRetenu/5
         public void Delete(int id)
         {
+            this.service.Delete(id);
         }
     }
 }

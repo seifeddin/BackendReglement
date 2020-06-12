@@ -12,5 +12,7 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         IEnumerable<FournisseurDto> GetAllFournisseurs();
         List<LookupDto> GetLookupFournisseurs();
+        FournisseurDto Insert(FournisseurDto fournisseurDto);
+        FournisseurDto Update(FournisseurDto fournisseurDto);
     }
 }

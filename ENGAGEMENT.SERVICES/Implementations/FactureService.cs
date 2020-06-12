@@ -26,6 +26,18 @@ namespace ENGAGEMENT.SERVICES.Implementations
          return   this.factureRepository.GetAll().Where(x => x.IdFournisseur == idFournisseur).Select(f => this.mapper.Map<FactureDto>(f)); ;
         }
 
-       
+        public FactureDto Insert(FactureDto factureDto)
+        {
+            Facture facture = this.factureRepository.Insert(this.mapper.Map<Facture>(factureDto));
+            return this.mapper.Map<FactureDto>(facture);
+        }
+        public FactureDto Update(FactureDto factureDto)
+        {
+            Facture facture = this.factureRepository.Update(this.mapper.Map<Facture>(factureDto));
+            return this.mapper.Map<FactureDto>(facture);
+        }
+
+
+
     }
 }
