@@ -27,8 +27,9 @@ namespace ENGAGEMENT.SERVICES.Implementations
         }
         public AnnexeDto Update(AnnexeDto annexeDto)
         {
-            Annexe annexe = this.repository.Update(this.mapper.Map<Annexe>(annexeDto));
-            return this.mapper.Map<AnnexeDto>(annexe);
+            Annexe toUpdate = this.GetById(annexeDto.Id);
+            toUpdate.Description = annexeDto.Description;
+            return this.mapper.Map<AnnexeDto>(this.repository.Update(toUpdate));
         }
 
         public List<LookupDto> GetLookupDto()

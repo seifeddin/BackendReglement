@@ -33,7 +33,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         [HttpGet]
-        [Route("GetLookup", Name = "GetLookup")]
+        [Route("GetLookup", Name = "GetLookupBonAPayer")]
         public List<LookupDto> GetLookup()
         {
             return this.service.GetLookupDto();

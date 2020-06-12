@@ -33,7 +33,7 @@ namespace ENGAGEMENT.Controllers
             return this.mapper.Map<ModeReglementDto>(this.service.GetById(id));
         }
         [HttpGet]
-        [Route("GetLookup", Name = "GetLookup")]
+        [Route("GetLookup", Name = "GetLookupModeReglement")]
         public List<LookupDto> GetLookup()
         {
             return this.service.GetLookupDto();
