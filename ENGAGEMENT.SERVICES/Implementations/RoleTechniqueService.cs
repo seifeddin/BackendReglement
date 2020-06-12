@@ -30,5 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             RoleTechnique roleTechniquet = this.repository.Update(this.mapper.Map<RoleTechnique>(roleTechniqueDto));
             return this.mapper.Map<RoleTechniqueDto>(roleTechniquet);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = p.Description }).ToList();
+        }
     }
 }

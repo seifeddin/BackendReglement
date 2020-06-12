@@ -31,5 +31,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
           ModeReglement modeReglement = this.repository.Update(this.mapper.Map<ModeReglement>(modeReglementDto));
           return this.mapper.Map<ModeReglementDto>(modeReglement);
       }
+      public List<LookupDto> GetLookupDto()
+      {
+          return this.repository.GetAll()
+              .Select(p => new LookupDto { Id = p.Id, Designation = p.Description }).ToList();
+      }
     }
 }

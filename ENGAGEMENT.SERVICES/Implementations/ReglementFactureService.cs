@@ -30,5 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             ReglementFacture reglementFacturet = this.repository.Update(this.mapper.Map<ReglementFacture>(reglementFactureDto));
             return this.mapper.Map<ReglementFactureDto>(reglementFacturet);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = p.Id.ToString() }).ToList();
+        }
     }
 }

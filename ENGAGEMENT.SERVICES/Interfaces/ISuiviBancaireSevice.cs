@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         SuiviBancaireDto Insert(SuiviBancaireDto suiviBancaireDto);
         SuiviBancaireDto Update(SuiviBancaireDto suiviBancaireDto);
+        List<LookupDto> GetLookupDto();
     }
 }

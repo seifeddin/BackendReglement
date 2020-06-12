@@ -34,6 +34,13 @@ namespace ENGAGEMENT.Controllers
             return this.mapper.Map<ReglementFactureDto>(this.service.GetById(id));
         }
 
+        [HttpGet]
+        [Route("GetLookup", Name = "GetLookup")]
+        public List<LookupDto> GetLookup()
+        {
+            return this.service.GetLookupDto();
+        }
+
         // POST: api/ReglementFacture
         public ReglementFactureDto Post([FromBody]ReglementFactureDto reglementFactureDto)
         {

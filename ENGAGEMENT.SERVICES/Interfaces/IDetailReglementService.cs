@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         DetailReglementDto Insert(DetailReglementDto detailReglementDto);
         DetailReglementDto Update(DetailReglementDto detailReglementDto);
+        List<LookupDto> GetLookupDto();
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ENGAGEMENT.CORE.Dto;
 
 namespace ENGAGEMENT.SERVICES.Implementations
 {
@@ -27,7 +28,6 @@ namespace ENGAGEMENT.SERVICES.Implementations
         {
             return _repository.GetAll();
         }
-
         public T GetById(object id)
         {
             return _repository.GetById(id);

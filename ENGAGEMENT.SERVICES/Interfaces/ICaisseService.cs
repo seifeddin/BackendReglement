@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         CaisseDto Insert(CaisseDto caisseDto);
         CaisseDto Update(CaisseDto caisseDto);
+        List<LookupDto> GetLookupDto();
     }
 }

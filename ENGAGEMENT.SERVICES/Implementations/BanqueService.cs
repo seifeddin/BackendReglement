@@ -30,5 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             Banque banque = this.repository.Insert(this.mapper.Map<Banque>(banqueDto));
             return this.mapper.Map<BanqueDto>(banque);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(banque => new LookupDto { Id = banque.Id, Designation = banque.Description }).ToList();
+        }
     }
 }

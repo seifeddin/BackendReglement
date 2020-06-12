@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         UtilisateurDto Insert(UtilisateurDto utilisateurDto);
         UtilisateurDto Update(UtilisateurDto utilisateurDto);
+        List<LookupDto> GetLookupDto();
     }
 }

@@ -33,6 +33,12 @@ namespace ENGAGEMENT.Controllers
             return this.mapper.Map<AnnexeDto>(this.service.GetById(id));
         }
 
+        [HttpGet]
+        [Route("GetLookup", Name = "GetLookup")]
+        public List<LookupDto> GetLookup()
+        {
+            return this.service.GetLookupDto();
+        }
         // POST: api/Annexe
         public AnnexeDto Post([FromBody]AnnexeDto annexeDto)
         {

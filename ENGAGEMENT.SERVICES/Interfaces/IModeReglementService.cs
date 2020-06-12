@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         ModeReglementDto Insert(ModeReglementDto modeReglementDto);
         ModeReglementDto Update(ModeReglementDto modeReglementDto);
+        List<LookupDto> GetLookupDto();
     }
 }

@@ -30,5 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             RoleFonctionnel roleFonctionnelt = this.repository.Update(this.mapper.Map<RoleFonctionnel>(roleFonctionnelDto));
             return this.mapper.Map<RoleFonctionnelDto>(roleFonctionnelt);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = p.Description }).ToList();
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         RoleFonctionnelDto Insert(RoleFonctionnelDto roleFonctionnelDto);
         RoleFonctionnelDto Update(RoleFonctionnelDto roleFonctionnelDto);
+        List<LookupDto> GetLookupDto();
     }
 }

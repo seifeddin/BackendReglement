@@ -30,5 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             RubriqueRetenu rubriqueRetenu = this.repository.Update(this.mapper.Map<RubriqueRetenu>(rubriqueRetenuDto));
             return this.mapper.Map<RubriqueRetenuDto>(rubriqueRetenu);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = p.Id.ToString() }).ToList();
+        }
     }
 }

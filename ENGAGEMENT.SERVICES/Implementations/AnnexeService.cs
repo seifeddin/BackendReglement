@@ -30,5 +30,11 @@ namespace ENGAGEMENT.SERVICES.Implementations
             Annexe annexe = this.repository.Update(this.mapper.Map<Annexe>(annexeDto));
             return this.mapper.Map<AnnexeDto>(annexe);
         }
+
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(annexe => new LookupDto {Id = annexe.Id, Designation = annexe.Description}).ToList();
+        }
     }
 }

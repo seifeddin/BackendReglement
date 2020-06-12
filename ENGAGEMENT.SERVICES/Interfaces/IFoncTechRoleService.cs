@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         FoncTechRoleDto Insert(FoncTechRoleDto foncTechRoleDto);
         FoncTechRoleDto Update(FoncTechRoleDto foncTechRoleDto);
+        List<LookupDto> GetLookupDto();
     }
 }

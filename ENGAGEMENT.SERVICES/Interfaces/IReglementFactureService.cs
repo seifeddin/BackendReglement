@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         ReglementFactureDto Insert(ReglementFactureDto reglementFactureDto);
         ReglementFactureDto Update(ReglementFactureDto reglementFactureDto);
+        List<LookupDto> GetLookupDto();
     }
 }

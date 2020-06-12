@@ -33,5 +33,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             Caisse caisse = this.repository.Update(this.mapper.Map<Caisse>(caisseDto));
             return this.mapper.Map<CaisseDto>(caisse);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(caisse => new LookupDto { Id = caisse.Id, Designation = caisse.Description }).ToList();
+        }
     }
 }

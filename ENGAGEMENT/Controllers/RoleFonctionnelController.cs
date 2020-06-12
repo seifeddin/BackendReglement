@@ -33,6 +33,13 @@ namespace ENGAGEMENT.Controllers
             return this.mapper.Map<RoleFonctionnelDto>(this.service.GetById(id));
         }
 
+        [HttpGet]
+        [Route("GetLookup", Name = "GetLookup")]
+        public List<LookupDto> GetLookup()
+        {
+            return this.service.GetLookupDto();
+        }
+
         // POST: api/RoleFonctionnel
         public RoleFonctionnelDto Post([FromBody]RoleFonctionnelDto roleFonctionnelDto)
         {

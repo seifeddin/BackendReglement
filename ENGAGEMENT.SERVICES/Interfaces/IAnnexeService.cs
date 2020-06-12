@@ -11,5 +11,7 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     public interface IAnnexeService : ICommonService<Annexe>
     {
         AnnexeDto Insert(AnnexeDto annexeDto);
+        AnnexeDto Update(AnnexeDto annexeDto);
+        List<LookupDto> GetLookupDto();
     }
 }

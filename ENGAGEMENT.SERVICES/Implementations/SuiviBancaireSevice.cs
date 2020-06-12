@@ -30,5 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             SuiviBancaire suiviBancairet = this.repository.Update(this.mapper.Map<SuiviBancaire>(suiviBancaireDto));
             return this.mapper.Map<SuiviBancaireDto>(suiviBancairet);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = p.Id.ToString() }).ToList();
+        }
     }
 }

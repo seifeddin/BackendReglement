@@ -13,5 +13,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
         IEnumerable<FactureDto> GetFacturesByFournisseur(int idFournisseur);
         FactureDto Insert(FactureDto factureDto);
         FactureDto Update(FactureDto factureDto);
+        List<LookupDto> GetLookupDto();
     }
 }

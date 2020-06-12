@@ -30,5 +30,14 @@ namespace ENGAGEMENT.SERVICES.Implementations
             BonAPayer bonAPayer = this.repository.Update(this.mapper.Map<BonAPayer>(bonAPayerDto));
             return this.mapper.Map<BonAPayerDto>(bonAPayer);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(bonAPayer => new LookupDto
+                {
+                    Id = bonAPayer.Id, Designation = bonAPayer.Id.ToString()
+
+                }).ToList();
+        }
     }
 }

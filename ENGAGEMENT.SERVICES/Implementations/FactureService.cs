@@ -36,7 +36,11 @@ namespace ENGAGEMENT.SERVICES.Implementations
             Facture facture = this.factureRepository.Update(this.mapper.Map<Facture>(factureDto));
             return this.mapper.Map<FactureDto>(facture);
         }
-
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.factureRepository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = p.Reference }).ToList();
+        }
 
 
     }

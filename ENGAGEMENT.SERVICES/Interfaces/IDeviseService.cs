@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         DeviseDto Insert(DeviseDto deviseDto);
         DeviseDto Update(DeviseDto deviseDto);
+        List<LookupDto> GetLookupDto();
     }
 }

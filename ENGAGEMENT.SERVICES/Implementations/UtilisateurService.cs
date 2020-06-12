@@ -30,5 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             Utilisateur utilisateurt = this.repository.Update(this.mapper.Map<Utilisateur>(utilisateurDto));
             return this.mapper.Map<UtilisateurDto>(utilisateurt);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = $"{p.Prenom} {p.Nom}" }).ToList();
+        }
     }
 }

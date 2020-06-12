@@ -32,6 +32,13 @@ namespace ENGAGEMENT.Controllers
             return this.mapper.Map<RetenuDto>(this.service.GetById(id));
         }
 
+        [HttpGet]
+        [Route("GetLookup", Name = "GetLookup")]
+        public List<LookupDto> GetLookup()
+        {
+            return this.service.GetLookupDto();
+        }
+
         // POST: api/Retenu
         public RetenuDto Post([FromBody]RetenuDto retenuDto)
         {

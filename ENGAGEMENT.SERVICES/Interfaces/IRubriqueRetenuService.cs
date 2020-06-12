@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         RubriqueRetenuDto Insert(RubriqueRetenuDto rubriqueRetenuDto);
         RubriqueRetenuDto Update(RubriqueRetenuDto rubriqueRetenuDto);
+        List<LookupDto> GetLookupDto();
     }
 }

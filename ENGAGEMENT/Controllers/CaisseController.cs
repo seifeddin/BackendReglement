@@ -31,6 +31,13 @@ namespace ENGAGEMENT.Controllers
             return this.mapper.Map<CaisseDto>(this.service.GetById(id));
         }
 
+        [HttpGet]
+        [Route("GetLookup", Name = "GetLookup")]
+        public List<LookupDto> GetLookup()
+        {
+            return this.service.GetLookupDto();
+        }
+
         // POST: api/Caisse
         public CaisseDto Post([FromBody]CaisseDto caisseDto)
         {

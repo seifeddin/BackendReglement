@@ -32,7 +32,12 @@ namespace ENGAGEMENT.Controllers
         {
             return this.mapper.Map<ModeReglementDto>(this.service.GetById(id));
         }
-
+        [HttpGet]
+        [Route("GetLookup", Name = "GetLookup")]
+        public List<LookupDto> GetLookup()
+        {
+            return this.service.GetLookupDto();
+        }
         // POST: api/ModeReglement
         public ModeReglementDto Post([FromBody]ModeReglementDto modeReglementDto)
         {

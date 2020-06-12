@@ -30,5 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             Reglement reglement = this.repository.Update(this.mapper.Map<Reglement>(reglementDto));
             return this.mapper.Map<ReglementDto>(reglement);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = p.Id.ToString() }).ToList();
+        }
     }
 }

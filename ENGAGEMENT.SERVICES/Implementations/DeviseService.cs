@@ -32,5 +32,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             Devise devise = this.repository.Update(this.mapper.Map<Devise>(deviseDto));
             return this.mapper.Map<DeviseDto>(devise);
         }
+        public List<LookupDto> GetLookupDto()
+        {
+            return this.repository.GetAll()
+                .Select(p => new LookupDto { Id = p.Id, Designation = p.CodeDevise }).ToList();
+        }
     }
 }

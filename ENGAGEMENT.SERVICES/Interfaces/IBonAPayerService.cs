@@ -12,5 +12,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         BonAPayerDto Insert(BonAPayerDto bonAPayerDto);
         BonAPayerDto Update(BonAPayerDto bonAPayerDto);
+        List<LookupDto> GetLookupDto();
     }
 }
