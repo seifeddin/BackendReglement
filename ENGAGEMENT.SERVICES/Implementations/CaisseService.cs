@@ -30,8 +30,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
 
         public CaisseDto Update(CaisseDto caisseDto)
         {
-            Caisse caisse = this.repository.Update(this.mapper.Map<Caisse>(caisseDto));
-            return this.mapper.Map<CaisseDto>(caisse);
+            Caisse toUpdate = this.GetById(caisseDto.Id);
+            toUpdate.Id = caisseDto.Id;
+            toUpdate.Description = caisseDto.Description;
+            return this.mapper.Map<CaisseDto>(this.repository.Update(toUpdate));
         }
         public List<LookupDto> GetLookupDto()
         {

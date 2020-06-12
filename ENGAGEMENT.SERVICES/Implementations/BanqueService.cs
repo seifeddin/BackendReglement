@@ -27,8 +27,9 @@ namespace ENGAGEMENT.SERVICES.Implementations
         }
         public BanqueDto Update(BanqueDto banqueDto)
         {
-            Banque banque = this.repository.Insert(this.mapper.Map<Banque>(banqueDto));
-            return this.mapper.Map<BanqueDto>(banque);
+            Banque toUpdate = this.GetById(banqueDto.Id);
+            toUpdate.Description = banqueDto.Description;
+            return this.mapper.Map<BanqueDto>(this.repository.Update(toUpdate));
         }
         public List<LookupDto> GetLookupDto()
         {

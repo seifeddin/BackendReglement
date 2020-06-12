@@ -27,8 +27,15 @@ namespace ENGAGEMENT.SERVICES.Implementations
         }
         public BonAPayerDto Update(BonAPayerDto bonAPayerDto)
         {
-            BonAPayer bonAPayer = this.repository.Update(this.mapper.Map<BonAPayer>(bonAPayerDto));
-            return this.mapper.Map<BonAPayerDto>(bonAPayer);
+            BonAPayer toUpdate = this.GetById(bonAPayerDto.Id);
+            toUpdate.DateSignature = bonAPayerDto.DateSignature;
+            toUpdate.DateValidation = bonAPayerDto.DateValidation;
+            toUpdate.EstRegle = bonAPayerDto.EstRegle;
+            toUpdate.MontantRetenu = bonAPayerDto.MontantRetenu;
+            toUpdate.MontantTotalEcheance = bonAPayerDto.MontantTotalEcheance;
+            toUpdate.NetAPayer = bonAPayerDto.NetAPayer;
+            toUpdate.ValiderPar = bonAPayerDto.ValiderPar;
+            return this.mapper.Map<BonAPayerDto>(this.repository.Update(toUpdate));
         }
         public List<LookupDto> GetLookupDto()
         {

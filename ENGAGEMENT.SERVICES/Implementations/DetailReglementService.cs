@@ -29,8 +29,14 @@ namespace ENGAGEMENT.SERVICES.Implementations
 
         public DetailReglementDto Update(DetailReglementDto detailReglementDto)
         {
-            DetailReglement detailReglement = this.repository.Update(this.mapper.Map<DetailReglement>(detailReglementDto));
-            return this.mapper.Map<DetailReglementDto>(detailReglement);
+            DetailReglement toUpdate = this.GetById(detailReglementDto.Id);
+            toUpdate.Id = detailReglementDto.Id;
+            toUpdate.IdBanque = detailReglementDto.IdBanque;
+            toUpdate.IdCaisse = detailReglementDto.IdCaisse;
+            toUpdate.IdDevise = detailReglementDto.IdDevise;
+            toUpdate.IdModeReglement = detailReglementDto.IdModeReglement;
+            toUpdate.IdReglement = toUpdate.IdReglement;
+            return this.mapper.Map<DetailReglementDto>(this.repository.Update(toUpdate));
         }
         public List<LookupDto> GetLookupDto()
         {
