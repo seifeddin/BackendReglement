@@ -10,6 +10,7 @@ using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
 {
+    [RoutePrefix("api/Caisse")]
     public class CaisseController : ApiController
     {
         private readonly ICaisseService service;
