@@ -27,7 +27,8 @@ namespace ENGAGEMENT.Controllers
         {
             return this.service.GetAll().Select(this.mapper.Map<DetailReglementDto>);
         }
-
+        [HttpGet]
+        [Route("GetByReglement/{id:int}", Name = "GetByReglementById")]
         public IEnumerable<DetailReglementDto> GetByReglement(int id)
         {
             return this.service.GetAll().Where(x => x.IdReglement == id).Select(this.mapper.Map<DetailReglementDto>);
@@ -40,7 +41,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         [HttpGet]
-      
+        [Route("GetLookup" , Name = "GetLookupDetailReglement")]
         public List<LookupDto> GetLookup()
         {
             return this.service.GetLookupDto();
