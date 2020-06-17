@@ -32,6 +32,7 @@ namespace ENGAGEMENT.DATA
             if (id == null) throw new ArgumentNullException("entity");
             T existing = table.Find(id);
             table.Remove(existing);
+            this.Save();
         }
 
         public IEnumerable<T> GetAll()

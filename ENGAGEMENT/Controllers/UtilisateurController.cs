@@ -22,12 +22,16 @@ namespace ENGAGEMENT.Controllers
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         // GET: api/Utilisateur
-        public IEnumerable<UtilisateurDto> Get()
+        [HttpGet]
+        [Route("GetUtilisateurs/", Name = "GetAllUsers")]
+        public List<UtilisateurDto> GetUtilisateurs()
         {
-            return this.service.GetAll().Select(this.mapper.Map<UtilisateurDto>);
+            return this.service.GetAll().Select(this.mapper.Map<UtilisateurDto>).ToList();
         }
 
         // GET: api/Utilisateur/5
+        [HttpGet]
+        [Route("GetUtilisateurById/{id}",Name = "GetUtilisateurById")]
         public UtilisateurDto Get(int id)
         {
             return this.mapper.Map<UtilisateurDto>(this.service.GetById(id));
@@ -52,7 +56,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         // PUT: api/Utilisateur/5
-        public UtilisateurDto Put(int id, [FromBody]UtilisateurDto utilisateurDto)
+        public UtilisateurDto Put([FromBody]UtilisateurDto utilisateurDto)
         {
             if (ModelState.IsValid)
             {
@@ -63,9 +67,12 @@ namespace ENGAGEMENT.Controllers
         }
 
         // DELETE: api/Utilisateur/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("Delete/{id:int}",Name = "DeleteUtilisateur")]
+        public bool Delete(int id)
         {
             this.service.Delete(id);
+            return true;
         }
     }
 }
