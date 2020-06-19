@@ -40,12 +40,14 @@ namespace ENGAGEMENT.Controllers
             return this.service.GetLookupFournisseurs();
         }
         // GET: api/Fournisseur
+        [Route("GetAllFournisseurs", Name = "GetAllFournisseurs")]
         public IEnumerable<FournisseurDto> Get()
         {
             return this.service.GetAll().Select(this.mapper.Map<FournisseurDto>);
         }
 
         // GET: api/Fournisseur/5
+        [Route("GetFournisseur", Name = "GetFournisseur")]
         public FournisseurDto Get(int id)
         {
             return this.mapper.Map<FournisseurDto>(this.service.GetById(id));
@@ -78,6 +80,7 @@ namespace ENGAGEMENT.Controllers
         {
             this.service.Delete(id);
         }
+        [HttpGet]
         [Route("GetReglementDtosByFournissuer/{id}",Name = "GetReglementDtosByFournissuer")]
         public List<ReglementDto> GetReglementDtosByFournissuer(int id)
         {
