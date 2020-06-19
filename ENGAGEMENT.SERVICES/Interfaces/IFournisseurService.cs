@@ -14,5 +14,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
         List<LookupDto> GetLookupFournisseurs();
         FournisseurDto Insert(FournisseurDto fournisseurDto);
         FournisseurDto Update(FournisseurDto fournisseurDto);
+        List<ReglementDto> ListReglementDtoByFournisseur(int id);
     }
 }

@@ -28,7 +28,8 @@ namespace ENGAGEMENT.Controllers
         }
 
         // GET: api/RoleFonctionnel/5
-        public RoleFonctionnelDto Get(int id)
+        [Route("GetById/{id}",Name = "GetRoleFonctionnelById")]
+        public RoleFonctionnelDto GetById(int id)
         {
             return this.mapper.Map<RoleFonctionnelDto>(this.service.GetById(id));
         }

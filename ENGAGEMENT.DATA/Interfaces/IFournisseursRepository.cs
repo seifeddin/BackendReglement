@@ -9,5 +9,6 @@ namespace ENGAGEMENT.DATA.Interfaces
 {
     public interface IFournisseursRepository:IRepository<Fournisseur>
     {
+        List<Reglement> ListReglementByFournisseur(int id);
     }
 }

@@ -78,5 +78,10 @@ namespace ENGAGEMENT.Controllers
         {
             this.service.Delete(id);
         }
+        [Route("GetReglementDtosByFournissuer/{id}",Name = "GetReglementDtosByFournissuer")]
+        public List<ReglementDto> GetReglementDtosByFournissuer(int id)
+        {
+            return this.service.ListReglementDtoByFournisseur(id);
+        }
     }
 }

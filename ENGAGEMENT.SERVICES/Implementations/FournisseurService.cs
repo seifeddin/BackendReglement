@@ -41,5 +41,10 @@ namespace ENGAGEMENT.SERVICES.Implementations
             return this._mapper.Map<FournisseurDto>(fournisseur);
         }
 
+        public List<ReglementDto> ListReglementDtoByFournisseur(int id)
+        {
+            return this.fournisseurRepository.ListReglementByFournisseur(id).Select(this._mapper.Map<ReglementDto>).ToList();
+        }
+
     }
 }
