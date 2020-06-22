@@ -11,7 +11,7 @@ namespace ENGAGEMENT.CORE.Dto
         public int IdTechRole { get; set; }
         public int? IdFoncRole { get; set; }
         public int Id { get; set; }
-        public RoleFonctionnelDto RoleFonctionnel { get; set; }
-        public RoleTechniqueDto RoleTechnique { get; set; }
+        //public virtual RoleFonctionnelDto RoleFonctionnel { get; set; }
+        //public virtual RoleTechniqueDto RoleTechnique { get; set; }
     }
 }

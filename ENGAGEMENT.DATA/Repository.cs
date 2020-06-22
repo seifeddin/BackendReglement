@@ -12,8 +12,8 @@ namespace ENGAGEMENT.DATA
     public class Repository<T> : IRepository<T> where T : class
     {
 
-        private REG_FSS_DB _context = null;
-        private DbSet<T> table = null;
+        protected REG_FSS_DB _context = null;
+        protected DbSet<T> table = null;
 
         public Repository()
         {

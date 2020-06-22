@@ -14,11 +14,14 @@ namespace ENGAGEMENT.Controllers
     public class RoleFonctionnelController : ApiController
     {
         private readonly IRoleFonctionnelService service;
+        private readonly IRoleTechniqueService roleTechniqueServiceservice;
         private readonly IMapper mapper;
 
-        public RoleFonctionnelController(IRoleFonctionnelService service, IMapper mapper)
+        public RoleFonctionnelController(IRoleFonctionnelService service, IRoleTechniqueService roleTechniqueServiceservice, IMapper mapper)
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
+            this.roleTechniqueServiceservice = roleTechniqueServiceservice ??
+                                               throw new ArgumentNullException(nameof(roleTechniqueServiceservice));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         // GET: api/RoleFonctionnel
@@ -35,10 +38,39 @@ namespace ENGAGEMENT.Controllers
         }
 
         [HttpGet]
+        [Route("GetRoleTechniqueDtosByRoleFonctionel/{id:int}", Name = "GetRoleTechniqueDtosByRoleFonctionelId")]
+        public List<RoleTechniqueDto> GetRoleTechniqueDtosByRoleFonctionel(int id)
+        {
+            List<RoleTechniqueDto> resultat = new List<RoleTechniqueDto>();
+            foreach (var item in this.service.GetById(id).FoncTechRole)
+            {
+                resultat.Add(this.mapper.Map<RoleTechniqueDto>(this.roleTechniqueServiceservice.GetById(item.IdTechRole)));
+            }
+            return resultat;
+        }
+        [HttpGet]
+        [Route("GetNotAffectedRoleTechnique/{id:int}", Name = "GetNotAffectedRoleTechnique")]
+        public List<RoleTechniqueDto> GetNotAffectedRoleTechnique(int id)
+        {
+            return this.roleTechniqueServiceservice.GetNotAffectedRoleTechnique(id);
+        }
+
+        [HttpGet]
         [Route("GetLookup", Name = "GetLookupRoleFonctionnel")]
         public List<LookupDto> GetLookup()
         {
             return this.service.GetLookupDto();
+        }
+        [HttpPost]
+        [Route("AddRoleTechniqueToRoleFonctionnel",Name = "AddRoleTechniqueToRoleFonctionnel")]
+        public RoleFonctionnelDto AddRoleTechniqueToRoleFonctionnel([FromBody] RoleFonctionnelDto roleFonctionnelDto)
+        {
+            if (ModelState.IsValid)
+            {
+                return this.service.AddRoleTechniqueToRoleFonctionnel(roleFonctionnelDto);
+            }
+
+            return null;
         }
 
         // POST: api/RoleFonctionnel
@@ -53,7 +85,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         // PUT: api/RoleFonctionnel/5
-        public RoleFonctionnelDto Put(int id, [FromBody]RoleFonctionnelDto roleFonctionnelDto)
+        public RoleFonctionnelDto Put([FromBody]RoleFonctionnelDto roleFonctionnelDto)
         {
             if (ModelState.IsValid)
             {
@@ -64,9 +96,17 @@ namespace ENGAGEMENT.Controllers
         }
 
         // DELETE: api/RoleFonctionnel/5
+        [Route("DeleteRoleFonctionnel/{id:int}", Name = "RoleFonctionnelDelete")]
         public void Delete(int id)
         {
             this.service.Delete(id);
+        }
+
+        [Route("DeleteRoleTechniqueFormFonctionnelRole/{roleTechniqueId:int}/{roleFonctionnelId:int}"
+            , Name = "DeleteRoleTechniqueFormFonctionnelRole")]
+        public void DeleteRoleTechniqueFormFonctionnelRole(int roleTechniqueId, int roleFonctionnelId)
+        {
+            this.service.DeleteRoleTechniqueFormFonctionnelRole(roleTechniqueId, roleFonctionnelId);
         }
     }
 }

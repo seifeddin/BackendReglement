@@ -12,6 +12,9 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         RoleFonctionnelDto Insert(RoleFonctionnelDto roleFonctionnelDto);
         RoleFonctionnelDto Update(RoleFonctionnelDto roleFonctionnelDto);
+        RoleFonctionnelDto AddRoleTechniqueToRoleFonctionnel(RoleFonctionnelDto roleFonctionnelDto);
+        void DeleteRoleTechniqueFormFonctionnelRole(int roleTechniqueId, int roleFonctionnelId);
+        void Delete(int id);
         List<LookupDto> GetLookupDto();
     }
 }
