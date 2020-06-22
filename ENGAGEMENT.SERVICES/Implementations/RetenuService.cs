@@ -35,5 +35,13 @@ namespace ENGAGEMENT.SERVICES.Implementations
             return this.repository.GetAll()
                 .Select(p => new LookupDto { Id = p.Id, Designation = p.Id.ToString() }).ToList();
         }
+
+        public RetenuDto InsertWithTransaction(RetenuDto retenuDto)
+        {     
+         Retenu retenu= this.repository.InsertWithTransaction(this.mapper.Map<Retenu>(retenuDto));
+            return this.mapper.Map<RetenuDto>(retenu);
+        }
+
+
     }
 }

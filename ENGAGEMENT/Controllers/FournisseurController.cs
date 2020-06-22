@@ -46,9 +46,17 @@ namespace ENGAGEMENT.Controllers
             return this.service.GetAll().Select(this.mapper.Map<FournisseurDto>);
         }
 
+        [HttpGet]
+        [Route("GetReglementDtosByFournissuer/{id:int}", Name = "GetReglementByFournissuer")]
+        public List<ReglementDto> GetReglementDtosByFournissuer(int id)
+        {
+            return this.service.ListReglementDtoByFournisseur(id);
+        }
+
         // GET: api/Fournisseur/5
-        [Route("GetFournisseur", Name = "GetFournisseur")]
-        public FournisseurDto Get(int id)
+        [HttpGet]
+        [Route("GetFournisseur/{id:int}", Name = "GetFournisseurById")]
+        public FournisseurDto GetFournisseur(int id)
         {
             return this.mapper.Map<FournisseurDto>(this.service.GetById(id));
         }
@@ -79,12 +87,6 @@ namespace ENGAGEMENT.Controllers
         public void Delete(int id)
         {
             this.service.Delete(id);
-        }
-        [HttpGet]
-        [Route("GetReglementDtosByFournissuer/{id}",Name = "GetReglementDtosByFournissuer")]
-        public List<ReglementDto> GetReglementDtosByFournissuer(int id)
-        {
-            return this.service.ListReglementDtoByFournisseur(id);
         }
     }
 }

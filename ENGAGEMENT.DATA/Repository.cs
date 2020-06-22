@@ -67,6 +67,27 @@ namespace ENGAGEMENT.DATA
             this.Save();
             return obj;
         }
-        
+
+
+        public T InsertWithTransaction(T obj)
+        {
+            var trans = _context.Database.BeginTransaction();
+            try
+            {
+                if (obj == null) throw new ArgumentNullException("entity");
+                table.Add(obj);
+                this.Save();
+               
+                trans.Commit();
+                return obj;
+            }
+            catch(Exception ex)
+            {
+                trans.Rollback();
+                return null;
+            }
+        }
+
+
     }
 }

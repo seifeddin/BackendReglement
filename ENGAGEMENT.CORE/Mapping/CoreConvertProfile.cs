@@ -33,6 +33,7 @@ namespace ENGAGEMENT.CORE.Mapping
             this.CreateMap<ReglementFacture,ReglementFactureDto>().ConvertUsing<ReglementFactureToReglementFactureDtoConverter>();
             this.CreateMap<ReglementFacture, ReglementFactureDto>().ReverseMap();
             this.CreateMap<Retenu,RetenuDto>().ConvertUsing<RetenuToRetenuDtoConverter>();
+            this.CreateMap<Retenu, RetenuDto>().ReverseMap();
             this.CreateMap<RoleFonctionnel,RoleFonctionnelDto>().ConvertUsing<RoleFonctionnelToRoleFonctionnelDtoConverter>();
             this.CreateMap<RoleFonctionnel, RoleFonctionnelDto>().ReverseMap();
             this.CreateMap<RoleTechnique,RoleTechniqueDto>().ConvertUsing<RoleTechniqueToRoleTechniqueDtoConverter>();

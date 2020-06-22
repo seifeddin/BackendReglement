@@ -66,5 +66,17 @@ namespace ENGAGEMENT.Controllers
         {
             this.service.Delete(id);
         }
+        [HttpPost]
+        [Route("Validate", Name = "validateRetenu")]
+        public RetenuDto Validate([FromBody]RetenuDto retenu)
+        {
+            if (ModelState.IsValid)
+            {
+
+               return this.service.InsertWithTransaction(retenu);
+            }
+            return null;
+
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace ENGAGEMENT.DATA.Interfaces
 {
     public interface IRetenuRepository : IRepository<Retenu>
     {
+        Retenu InsertWithTransaction(Retenu obj);
     }
 }

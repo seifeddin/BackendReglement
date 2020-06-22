@@ -13,5 +13,6 @@ namespace ENGAGEMENT.SERVICES.Interfaces
         RetenuDto Insert(RetenuDto retenuDto);
         RetenuDto Update(RetenuDto retenuDto);
         List<LookupDto> GetLookupDto();
+        RetenuDto InsertWithTransaction(RetenuDto retenuDto);
     }
 }

@@ -51,7 +51,7 @@ namespace ENGAGEMENT.Controllers
         }
 
         // PUT: api/Reglement/5
-        public ReglementDto Put(int id, [FromBody]ReglementDto reglementDto)
+        public ReglementDto Put([FromBody]ReglementDto reglementDto)
         {
             if (ModelState.IsValid)
             {
