@@ -28,8 +28,8 @@ namespace ENGAGEMENT.CORE.Converter
                  Id =  source.Id,
                  IdFoncRole = source.IdFoncRole,
                  IdTechRole = source.IdTechRole,
-                 RoleFonctionnel = this.mapper.Map<RoleFonctionnelDto>(source.RoleFonctionnel),
-                 RoleTechnique = this.mapper.Map<RoleTechniqueDto>(source.RoleTechnique),
+                 //RoleFonctionnel = this.mapper.Map<RoleFonctionnelDto>(source.RoleFonctionnel),
+                 //RoleTechnique = this.mapper.Map<RoleTechniqueDto>(source.RoleTechnique),
              };
         }
     }

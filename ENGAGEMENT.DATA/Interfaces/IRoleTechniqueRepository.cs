@@ -9,5 +9,6 @@ namespace ENGAGEMENT.DATA.Interfaces
 {
     public interface IRoleTechniqueRepository : IRepository<RoleTechnique>
     {
+        List<RoleTechnique>  GetNotAffectedRoleTechnique(int idRoleFonctionnel);
     }
 }

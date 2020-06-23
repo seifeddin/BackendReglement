@@ -12,6 +12,7 @@ namespace ENGAGEMENT.SERVICES.Interfaces
     {
         RoleTechniqueDto Insert(RoleTechniqueDto roleTechniqueDto);
         RoleTechniqueDto Update(RoleTechniqueDto roleTechniqueDto);
+        List<RoleTechniqueDto> GetNotAffectedRoleTechnique(int idRoleFonctionnel);
         List<LookupDto> GetLookupDto();
     }
 }
