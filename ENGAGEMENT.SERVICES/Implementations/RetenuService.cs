@@ -14,10 +14,12 @@ namespace ENGAGEMENT.SERVICES.Implementations
     public class RetenuService : CommonService<Retenu>, IRetenuService
     {
         private readonly IRetenuRepository repository;
+        private readonly IReglementRepository reglementRepository;
         private readonly IMapper mapper;
-        public RetenuService(IRetenuRepository repository, IMapper mapper) : base(repository)
+        public RetenuService(IRetenuRepository repository, IReglementRepository reglementRepository, IMapper mapper) : base(repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.reglementRepository = reglementRepository ?? throw new ArgumentNullException(nameof(reglementRepository));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         public RetenuDto Insert(RetenuDto retenuDto)
@@ -37,9 +39,21 @@ namespace ENGAGEMENT.SERVICES.Implementations
         }
 
         public RetenuDto InsertWithTransaction(RetenuDto retenuDto)
-        {     
-         Retenu retenu= this.repository.InsertWithTransaction(this.mapper.Map<Retenu>(retenuDto));
-            return this.mapper.Map<RetenuDto>(retenu);
+        {
+            try
+            {
+                Retenu retenu = this.repository.InsertWithTransaction(this.mapper.Map<Retenu>(retenuDto));
+                Reglement toUpdate = this.reglementRepository.GetById(retenuDto.IdReglement);
+                toUpdate.IdRetenu = retenu.Id;
+                this.reglementRepository.Update(toUpdate);
+                return this.mapper.Map<RetenuDto>(retenu);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
         }
 
 

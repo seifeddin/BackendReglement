@@ -11,6 +11,7 @@ namespace ENGAGEMENT.CORE.Dto
         public int Id { get; set; }
         public decimal? MontantRetenu { get; set; }
         public decimal? MontantTotalEcheance { get; set; }
+        public int? IdReglement { get; set; }
         public decimal? NetAPayer { get; set; }
         public string ValiderPar { get; set; }
         public DateTime? DateValidation { get; set; }

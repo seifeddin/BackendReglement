@@ -11,6 +11,7 @@ namespace ENGAGEMENT.CORE.Dto
         public int Id { get; set; }
         public DateTime? Date { get; set; }
         public int? NumeroCertficat { get; set; }
+        public int? IdReglement { get; set; }
         public string TypeMontant { get; set; }
         public DateTime? DateValidation { get; set; }
         public string ValiderPar { get; set; }

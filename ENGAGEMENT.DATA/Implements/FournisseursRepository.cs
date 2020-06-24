@@ -25,7 +25,7 @@ namespace ENGAGEMENT.DATA.Implements
                 join fac in this.context.Facture on furr.Id equals fac.IdFournisseur
                 join regdet in this.context.ReglementFacture on fac.Id equals regdet.IdFacture
                 join reg in this.context.Reglement on regdet.IdReglement equals reg.Id
-                select  reg).ToList();
+                select  reg).Distinct().ToList();
 
             return reglement;
         }

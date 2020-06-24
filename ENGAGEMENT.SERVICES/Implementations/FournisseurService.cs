@@ -28,7 +28,7 @@ namespace ENGAGEMENT.SERVICES.Implementations
 
         public List<LookupDto> GetLookupFournisseurs()
         {
-          return fournisseurRepository.GetAll().Select(x => new LookupDto { Id = x.Id, Designation = x.Nom }).ToList();
+          return fournisseurRepository.GetAll().Select(x => new LookupDto { Id = x.Id, Designation = x.Nom ?? x.RaisonSocial }).ToList();
         }
         public FournisseurDto Insert(FournisseurDto fournisseurDto)
         {

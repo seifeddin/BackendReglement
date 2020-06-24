@@ -29,7 +29,7 @@ namespace ENGAGEMENT.CORE.Converter
             {
                 Id = source.Id,
                 Description = source.Description,
-                RubriqueRetenu = source.RubriqueRetenu.Select(this.mapper.Map<RubriqueRetenuDto>).ToList(),
+                //RubriqueRetenu = source.RubriqueRetenu.Select(this.mapper.Map<RubriqueRetenuDto>).ToList(),
             };
         }
     }

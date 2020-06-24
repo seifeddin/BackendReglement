@@ -35,5 +35,26 @@ namespace ENGAGEMENT.SERVICES.Implementations
             return this.repository.GetAll()
                 .Select(p => new LookupDto { Id = p.Id, Designation = p.Id.ToString() }).ToList();
         }
+
+        public decimal GetMontantRegelement(int id)
+        {
+            decimal res = 0;
+            foreach ( var item in this.repository.GetById(id).DetailReglement)
+            {
+                res += item.Montant ?? 0;
+            }
+
+            return res;
+        }
+        public decimal GetTotalMontantRetenu(int id)
+        {
+            decimal res = 0;
+            foreach ( var item in this.repository.GetById(id).Retenu.RubriqueRetenu)
+            {
+                res += item.MontantTtc ?? 0;
+            }
+
+            return res;
+        }
     }
 }
