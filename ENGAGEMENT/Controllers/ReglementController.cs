@@ -39,6 +39,19 @@ namespace ENGAGEMENT.Controllers
             return this.service.GetLookupDto();
         }
 
+        [HttpGet]
+        [Route("GetMontantRegelement/{id}", Name = "GetMontantRegelement")]
+        public decimal GetMontantRegelement(int id)
+        {
+            return this.service.GetMontantRegelement(id);
+        }
+        [HttpGet]
+        [Route("GetTotalMontantRetenu/{id}", Name = "GetTotalMontantRetenu")]
+        public decimal GetTotalMontantRetenu(int id)
+        {
+            return this.service.GetTotalMontantRetenu(id);
+        }
+
         // POST: api/Reglement
         public ReglementDto Post([FromBody]ReglementDto reglementDto)
         {

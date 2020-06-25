@@ -13,5 +13,7 @@ namespace ENGAGEMENT.SERVICES.Interfaces
         ReglementDto Insert(ReglementDto reglementDto);
         ReglementDto Update(ReglementDto reglementDto);
         List<LookupDto> GetLookupDto();
+        decimal GetMontantRegelement(int id);
+        decimal GetTotalMontantRetenu(int id);
     }
 }
