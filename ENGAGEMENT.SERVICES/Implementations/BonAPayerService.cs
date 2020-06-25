@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.DATA.Interfaces;
+using ENGAGEMENT.DATA.Model;
 using ENGAGEMENT.ENTITY;
 using ENGAGEMENT.SERVICES.Interfaces;
 
@@ -45,6 +46,15 @@ namespace ENGAGEMENT.SERVICES.Implementations
                     Id = bonAPayer.Id, Designation = bonAPayer.Id.ToString()
 
                 }).ToList();
+        }
+        public List<ListBonAPayer> GetAllBonApayer()
+        {
+            return this.repository.GetAllBonApayer();
+        }
+
+        public List<ListBonAPayer> GetBonsRecuperes()
+        {
+            return this.repository.GetAllBonApayer().Where(x=>(x.EstValide==true && x.EstRegle!=true)).ToList();
         }
     }
 }

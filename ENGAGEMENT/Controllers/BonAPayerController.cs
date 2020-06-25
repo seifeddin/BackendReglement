@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using ENGAGEMENT.CORE.Dto;
+using ENGAGEMENT.DATA.Model;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
@@ -51,11 +52,11 @@ namespace ENGAGEMENT.Controllers
         }
 
         // PUT: api/BonAPayer/5
-        public BonAPayerDto Put([FromUri]int id, [FromBody]BonAPayerDto bonAPayerDto)
+        public BonAPayerDto Put([FromBody]BonAPayerDto bonAPayerDto)
         {
             if (ModelState.IsValid)
             {
-                return this.service.Insert(bonAPayerDto);
+                return this.service.Update(bonAPayerDto);
             }
 
             return null;
@@ -66,5 +67,17 @@ namespace ENGAGEMENT.Controllers
         {
             this.service.Delete(id);
         }
+
+        [HttpGet]
+        [Route("GetAllBonApayer", Name = "GetAllBon")]
+        public List<ListBonAPayer> GetAll()
+        { return this.service.GetAllBonApayer(); }
+
+
+        [HttpGet]
+        [Route("GetBonsRecuperes", Name = "GetBonsRecuperes")]
+        public List<ListBonAPayer> GetBonsRecuperes()
+        { return this.service.GetBonsRecuperes(); }
+
     }
 }

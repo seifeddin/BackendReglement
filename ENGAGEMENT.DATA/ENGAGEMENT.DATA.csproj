@@ -89,6 +89,7 @@
     <Compile Include="Interfaces\IRubriqueRetenuRepository.cs" />
     <Compile Include="Interfaces\ISuiviBancaireRepository.cs" />
     <Compile Include="Interfaces\IUtilisateurRepository.cs" />
+    <Compile Include="Model\ListBonAPayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>
@@ -102,6 +103,7 @@
       <Name>ENGAGEMENT.ENTITY</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

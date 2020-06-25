@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ENGAGEMENT.CORE.Dto;
+using ENGAGEMENT.DATA.Model;
 using ENGAGEMENT.ENTITY;
 
 namespace ENGAGEMENT.SERVICES.Interfaces
@@ -13,5 +14,7 @@ namespace ENGAGEMENT.SERVICES.Interfaces
         BonAPayerDto Insert(BonAPayerDto bonAPayerDto);
         BonAPayerDto Update(BonAPayerDto bonAPayerDto);
         List<LookupDto> GetLookupDto();
+        List<ListBonAPayer> GetAllBonApayer();
+        List<ListBonAPayer> GetBonsRecuperes();
     }
 }
