@@ -42,7 +42,7 @@ namespace ENGAGEMENT.DATA.Implements
                                 EcheanceReglement = r.Echeance
 
                             };
-            return bonAPayer.ToList();
+            return bonAPayer.Distinct().ToList();
         }
 
 

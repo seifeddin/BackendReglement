@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using ENGAGEMENT.CORE.Dto;
+using ENGAGEMENT.DATA.Model;
 using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
@@ -20,6 +21,12 @@ namespace ENGAGEMENT.Controllers
         {
             this.service = service ?? throw new ArgumentNullException(nameof(service));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        }
+        [HttpGet]
+        [Route("GetReglementPourSuivi", Name = "GetReglementPourSuivi")]
+        public List<CanvasReglement> GetReglementPourSuivi()
+        {
+            return this.service.GetReglementPourSuivi();
         }
         // GET: api/SuiviBancaire
         public IEnumerable<SuiviBancaireDto> Get()

@@ -17,9 +17,9 @@ namespace ENGAGEMENT
             config.EnableCors(cors);
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            config.Filters.Add(new AuthorizeAttribute());
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
                 = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            //config.Filters.Add(new AuthorizeAttribute());
 
             config.Formatters.JsonFormatter.MediaTypeMappings
             .Add(new System.Net.Http.Formatting.RequestHeaderMapping("Accept",

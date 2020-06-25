@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ENGAGEMENT.CORE.Dto;
 using ENGAGEMENT.DATA.Interfaces;
+using ENGAGEMENT.DATA.Model;
 using ENGAGEMENT.ENTITY;
 using ENGAGEMENT.SERVICES.Interfaces;
 
@@ -14,10 +15,12 @@ namespace ENGAGEMENT.SERVICES.Implementations
     public class SuiviBancaireSevice : CommonService<SuiviBancaire>, ISuiviBancaireSevice
     {
         private readonly ISuiviBancaireRepository repository;
+        private readonly IReglementRepository reglementRepository;
         private readonly IMapper mapper;
-        public SuiviBancaireSevice(ISuiviBancaireRepository repository, IMapper mapper) : base(repository)
+        public SuiviBancaireSevice(ISuiviBancaireRepository repository, IReglementRepository reglementRepository, IMapper mapper) : base(repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.reglementRepository = reglementRepository ?? throw new ArgumentNullException(nameof(reglementRepository));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         public SuiviBancaireDto Insert(SuiviBancaireDto suiviBancaireDto)
@@ -29,6 +32,11 @@ namespace ENGAGEMENT.SERVICES.Implementations
         {
             SuiviBancaire suiviBancairet = this.repository.Update(this.mapper.Map<SuiviBancaire>(suiviBancaireDto));
             return this.mapper.Map<SuiviBancaireDto>(suiviBancairet);
+        }
+
+        public List<CanvasReglement> GetReglementPourSuivi()
+        {
+            return this.reglementRepository.GetReglementPourSuivi().ToList();
         }
         public List<LookupDto> GetLookupDto()
         {

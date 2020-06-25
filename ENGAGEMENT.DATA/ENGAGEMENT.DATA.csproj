@@ -89,6 +89,7 @@
     <Compile Include="Interfaces\IRubriqueRetenuRepository.cs" />
     <Compile Include="Interfaces\ISuiviBancaireRepository.cs" />
     <Compile Include="Interfaces\IUtilisateurRepository.cs" />
+    <Compile Include="Model\CanvasReglement.cs" />
     <Compile Include="Model\ListBonAPayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />

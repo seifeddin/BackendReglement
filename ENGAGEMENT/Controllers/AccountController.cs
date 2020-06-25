@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ENGAGEMENT.SERVICES.Interfaces;
 
 namespace ENGAGEMENT.Controllers
 {
@@ -16,6 +17,11 @@ namespace ENGAGEMENT.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+        private readonly IUtilisateurService service;
+        public AccountController(IUtilisateurService service)
+        {
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
+        }
         [HttpPost]
         [Route("GetToken",Name ="GetToken")]
         [AllowAnonymous]
@@ -24,27 +30,37 @@ namespace ENGAGEMENT.Controllers
 
             string key = "A C B d A kK l MPON akqsk,d"; //Secret key which will be used later during validation    
             var issuer = "http://localhost:52549";  //normally this will be your site URL    
+            if (this.service.GetAll().FirstOrDefault(p => p.NomUtilisateur == _user.UserName && p.MotDePasse == _user.Password) != null)
+            {
+                var localUser = this.service.GetAll().FirstOrDefault(p =>
+                    p.NomUtilisateur == _user.UserName && p.MotDePasse == _user.Password);
+                User user = new User {FirstName = localUser?.Nom,
+                    LastName = localUser?.Prenom,
+                    UserName = localUser?.NomUtilisateur,
+                    Password = localUser?.MotDePasse,
+                    Role = localUser?.RoleFonctionnel?.Description,
+                };
+                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            User user = new User { FirstName = "Aida", LastName = "Athamnia", UserName = "test", Password = "Test" };
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+                //Create a List of Claims, Keep claims name short    
+                var permClaims = new List<Claim>();
+                permClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+                permClaims.Add(new Claim("username", ""));
+                permClaims.Add(new Claim("password", ""));
 
-            //Create a List of Claims, Keep claims name short    
-            var permClaims = new List<Claim>();
-            permClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            permClaims.Add(new Claim("username",""));
-            permClaims.Add(new Claim("password", ""));
+                //Create Security Token object by giving required parameters    
+                var token = new JwtSecurityToken(issuer, //Issure    
+                    issuer, //Audience    
+                    permClaims,
+                    expires: DateTime.Now.AddDays(1),
+                    signingCredentials: credentials);
+                var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
+                user.Token = jwt_token;
+                return user;
+            }
 
-            //Create Security Token object by giving required parameters    
-            var token = new JwtSecurityToken(issuer, //Issure    
-                            issuer,  //Audience    
-                            permClaims,
-                            expires: DateTime.Now.AddDays(1),
-                            signingCredentials: credentials);
-            var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
-            user.Token = jwt_token;
-
-            return user;
+            return null;
 
         }
 
