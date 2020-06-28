@@ -57,6 +57,10 @@ namespace ENGAGEMENT.Controllers
         {
             if (ModelState.IsValid)
             {
+                SuiviBancaireDto suivi = new SuiviBancaireDto();
+                suivi.EstImpayes = false;
+                suivi.EstPreavis = false;
+                suivi.EstRegle = false;
                 return this.service.Insert(reglementDto);
             }
 

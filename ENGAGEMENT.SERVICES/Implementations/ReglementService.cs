@@ -14,14 +14,18 @@ namespace ENGAGEMENT.SERVICES.Implementations
     public class ReglementService: CommonService<Reglement>, IReglementService
     {
         private readonly IReglementRepository repository;
+        private readonly ISuiviBancaireRepository suiviBancaireRepository;
         private readonly IMapper mapper;
-        public ReglementService(IReglementRepository repository,IMapper mapper) : base(repository)
+        public ReglementService(IReglementRepository repository,ISuiviBancaireRepository suiviBancaireRepository,IMapper mapper) : base(repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.suiviBancaireRepository = suiviBancaireRepository ?? throw new ArgumentNullException(nameof(suiviBancaireRepository));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         public ReglementDto Insert(ReglementDto reglementDto)
         {
+            SuiviBancaire suivi = this.suiviBancaireRepository.Insert(new SuiviBancaire { EstImpayes  = false , EstRegle = false, EstPreavis = false});
+            reglementDto.IdSuiviBancaire = suivi.Id;
             Reglement reglement = this.repository.Insert(this.mapper.Map<Reglement>(reglementDto));
             return this.mapper.Map<ReglementDto>(reglement);
         }
