@@ -16,10 +16,12 @@ namespace ENGAGEMENT.SERVICES.Implementations
     {
         private readonly IBonAPayerRepository repository;
         private readonly IReglementRepository reglementRepository;
+        private readonly IFacturesRepository facturesRepository;
         private readonly IMapper mapper;
-        public BonAPayerService(IBonAPayerRepository repository, IReglementRepository reglementRepository, IMapper mapper) : base(repository)
+        public BonAPayerService(IBonAPayerRepository repository, IReglementRepository reglementRepository, IFacturesRepository facturesRepository, IMapper mapper) : base(repository)
         {
             this.reglementRepository = reglementRepository ?? throw new ArgumentNullException(nameof(reglementRepository));
+            this.facturesRepository = facturesRepository ?? throw new ArgumentNullException(nameof(facturesRepository));
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
@@ -42,6 +44,13 @@ namespace ENGAGEMENT.SERVICES.Implementations
             toUpdate.MontantTotalEcheance = bonAPayerDto.MontantTotalEcheance;
             toUpdate.NetAPayer = bonAPayerDto.NetAPayer;
             toUpdate.ValiderPar = bonAPayerDto.ValiderPar;
+            foreach(var item in toUpdate.Reglement.FirstOrDefault().ReglementFacture)
+            {
+                Facture facture = this.facturesRepository.GetById(item.IdFacture);
+                facture.MontantRegle = item.MontantTotale;
+                facture.MontantReste = facture.MontantTotale - facture.MontantRegle;
+                this.facturesRepository.Update(facture);
+            }
             return this.mapper.Map<BonAPayerDto>(this.repository.Update(toUpdate));
         }
         public List<LookupDto> GetLookupDto()

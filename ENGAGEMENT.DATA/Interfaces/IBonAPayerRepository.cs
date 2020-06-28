@@ -10,6 +10,6 @@ namespace ENGAGEMENT.DATA.Interfaces
 {
     public interface IBonAPayerRepository : IRepository<BonAPayer>
     {
-        List<ListBonAPayer> GetAllBonApayer();
+         List<ListBonAPayer> GetAllBonApayer();
     }
 }
